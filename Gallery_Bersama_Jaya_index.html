@@ -1,0 +1,4046 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery_Bersama_Jaya</title>
+    <style>
+        /* CSS Header & Navigasi */
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .main-header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white; padding: 20px 0; box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        .header-content {
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; padding: 0 20px;
+        }
+        .logo { display: flex; align-items: center; gap: 15px; }
+        .logo-icon {
+            background: #ffcc00; color: #1e3c72; font-weight: bold;
+            font-size: 24px; padding: 10px 15px; border-radius: 12px;
+        }
+        .logo h1 { margin: 0; font-size: 24px; }
+        .logo h1 small { display: block; font-size: 14px; font-weight: normal; color: #d1d1d1; }
+        .modern-nav a {
+            color: white; text-decoration: none; padding: 8px 16px;
+            border-radius: 20px; font-weight: bold; transition: 0.3s;
+        }
+        .modern-nav a.active { background: #ffcc00; color: #1e3c72; }
+
+        /* CSS Galeri & Kontrol */
+        .controls { 
+            text-align: center; margin: 30px auto; max-width: 800px;
+            background: white; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        input[type="search"], select { padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        
+        .gallery-grid { 
+            display: flex; flex-wrap: wrap; justify-content: center; 
+            gap: 20px; max-width: 1200px; margin: 0 auto; padding: 20px;
+        }
+        figure { 
+            background: white; padding: 10px; margin: 0; border: 1px solid #ddd; 
+            border-radius: 8px; text-align: center; width: 170px; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: 0.2s;
+        }
+        figure:hover { transform: scale(1.05); }
+        figure img { width: 150px; height: 150px; object-fit: contain; }
+        figcaption { font-size: 0.85em; font-weight: bold; margin-top: 8px; color: #333; }
+
+        #noProductMessage { display: none; width: 100%; text-align: center; padding: 40px; color: #666; }
+    </style>
+
+</head>
+<body>
+<header class="main-header">
+    <div class="header-content">
+        <div class="logo">
+            <span class="logo-icon">BJ</span>
+            <h1>Bersama Jaya <small>Gallery Stok</small></h1>
+        </div>
+        <nav class="modern-nav">
+            <a href="Home_Bersama_Jaya.html">Home</a>
+            <a href="Gallery_Bersama_Jaya.html" class="active">Gallery</a>
+        </nav>
+    </div>
+</header>
+
+<div class="controls">
+    <input type="search" id="searchInput" placeholder="Cari nama produk..." onkeyup="filterProduct()">
+    <label style="margin-left: 10px;">Filter: </label>
+    <select id="categorySelect" onchange="filterProduct()">
+        <option value="">-- Semua Produk --</option>
+        <option value="aki">Aki (Battery)</option>
+        <option value="amplas">Amplas</option>
+        <option value="alat las">Alat Las</option>
+        <option value="ban">Ban Dalam</option>
+        <option value="batu">Batu Gerinda</option>
+        <option value="bearing">Bearing</option>
+        <option value="bor">Bor</option>
+        <option value="cat">Cat / Alat Cat</option>
+        <option value="cleaner">Cleaner</option>
+        <option value="coolant">Coolant</option>
+        <option value="cutting tip">Cutting Tip</option>
+        <option value="cutting torch">Cutting Torch</option>
+        <option value="dongkrak">Dongkrak</option>
+        <option value="elektrik">Elektrik</option>
+        <option value="face">Face Guard / Face Shield</option>
+        <option value="gergaji">Gergaji</option>
+        <option value="gembok">Gembok</option>
+        <option value="gerinda">Gerinda</option>
+        <option value="gerobak">Gerobak</option>
+        <option value="gunting">Gunting</option>
+        <option value="isi angin">Isi Angin / Cutter / Staples</option>
+        <option value="jas hujan">Jas hujan </option>
+        <option value="kaca">Kacamata / Kaca Las </option>
+        <option value="kawat">Kawat Las / Seling </option>
+        <option value="kikir">Kikir </option>
+        <option value="kunci">Kunci </option>
+        <option value="masker">Masker </option>
+        <option value="mata bor">Mata Bor </option>
+        <option value="mesh">Mesh </option>
+        <option value="meteran">Meteran </option>
+        <option value="nozzle">Nozzle </option>
+        <option value="obeng">Obeng </option>
+        <option value="oring">Oring </option>
+        <option value="packing">Packing </option>
+        <option value="palu">Palu </option>
+        <option value="pertukangan">Pertukangan </option>
+        <option value="pisau">Pisau </option>
+        <option value="pompa">Pompa </option>
+        <option value="rem">Minyak Rem </option>
+        <option value="regulator">Regulator</option>
+        <option value="respirator">Respirator</option>
+        <option value="safety">Safety</option>
+        <option value="sanitary">Sanitary</option>
+        <option value="seal">Seal</option>
+        <option value="selang">Selang</option>
+        <option value="tang kombinasi">Tang Kombinasi</option>
+        <option value="tang lancip">Tang Lancip</option>
+        <option value="tang potong">Tang Potong</option>
+        <option value="valve">Valve / Keran</option>
+    </select>
+</div>
+   
+   <main class="gallery-grid">
+
+        <figure>
+            <img src="FOTO PRODUK/AIR AKI (OBAT).png" alt="Obat Aki" width="150" height="150">
+            <figcaption>Air Aki (Obat) (TORHO) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/AIR AKI TAMBAH.png" alt="Air Aki Tambah" width="150" height="150">
+            <figcaption>Air Aki Tambah</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/AIR DUSTER.png" alt="Air Duster" width="150" height="150">
+            <figcaption>Air Duster</figcaption>
+        </figure>   
+        
+        <figure>
+            <img src="FOTO PRODUK/AKI G-FORCE.png" alt="Aki G-Force" width="150" height="150">
+            <figcaption>Aki G-Force</figcaption>
+        </figure> 
+
+        <figure>
+            <img src="FOTO PRODUK/AKI GS ASTRA (ASLI).png" alt="Aki GS Astra" width="150" height="150">
+            <figcaption>Aki GS ASTRA (Asli)</figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/ALAT TAMBAL BAN TUBELESS NASA.png" alt="Alat Tambal Ban Tubeless" width="150" height="150">
+            <figcaption>Alat Tambal Ban Tubeless NASA</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ALAT TAMBAL BAN TUBELESS TORA.png" alt="Alat Tambal Ban Tubeless" width="150" height="150">
+            <figcaption>Alat tambal Ban Tubeless TORA</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/AMPLAS KERTAS NO 2000.png" alt="Amplas Kertas" width="150" height="150">
+            <figcaption>Amplas Kertas No 2000</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/AMPLAS KERTAS NO 5000.png" alt="Amplas Kertas" width="150" height="150">
+            <figcaption>Amplas Kertas No 5000</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/AMPLAS KERTAS.png" alt="Amplas Kertas" width="150" height="150">
+            <figcaption>Amplas Kertas No 60 - 1000</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/AMPLAS SUSUN.png" alt="Amplas Susun" width="150" height="150">
+            <figcaption>Amplas Susun</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/APRON LAS CW LENGAN.png" alt="Apron Las c/w lengan" width="150" height="150">
+            <figcaption>Apron Las c/w Lengan (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/APRON LAS.png" alt="Apron Las" width="150" height="150">
+            <figcaption>Apron Las Protector (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/APRON PARASUT + LOGO.png" alt="Apron Parasut" width="150" height="150">
+            <figcaption>Apron Parasut + Logo (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/APRON PVC (RACUN).png" alt="Apron PVC (Racun)" width="150" height="150">
+            <figcaption>Apron PVC (Racun) (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/APRON PVC + LOGO_.png" alt="Apron PVC + Logo" width="150" height="150">
+            <figcaption>Apron PVC + Logo (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ARMATURE GERINDA BOSCH.png" alt="Armature Gerinda" width="150" height="150">
+            <figcaption>Armature Gerinda BOSCH</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BALL VALVE KITZ.png" alt="Ball Valve Kuningan KITZ" width="150" height="150">
+            <figcaption>Ball Valve Kuningan KITZ</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BALL VALVE PVC ONDA.png" alt="Ball Valve ONDA" width="150" height="150">
+            <figcaption>Ball Valve PVC ONDA</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BALL VALVE STAINLES STEEL SANKYO.png" alt="Ball Valve S/Steel SANKYO" width="150" height="150">
+            <figcaption>Ball Valve S/Steel SANKYO</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 6.50 - 10.png" alt="Ban Dalam 6.50 - 10" width="150" height="150">
+            <figcaption>Ban Dalam 6.50 - 10</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 7.00 - 12.png" alt="Ban Dalam 7.00 - 12" width="150" height="150">
+            <figcaption>Ban Dalam 7.00 - 12</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 8.25 - 20.png" alt="Ban Dalam 8.25 - 20" width="150" height="150">
+            <figcaption>Ban Dalam 8.25 - 20</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 9.00 - 20.png" alt="Ban Dalam 9.00 - 20" width="150" height="150">
+            <figcaption>Ban Dalam 9.00 - 20</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 12.4 - 24.png" alt="Ban Dalam 12.4 - 24" width="150" height="150">
+            <figcaption>Ban Dalam 12.4 - 24</figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 12.5 - 18.png" alt="Ban Dalam 12.5 - 18" width="150" height="150">
+            <figcaption>Ban Dalam 12.5 - 18</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 13.00 - 24.png" alt="Ban Dalam 13.00 - 24" width="150" height="150">
+            <figcaption>Ban Dalam 13.00 - 24</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 17.5 - 25.png" alt="Ban Dalam 17.5 - 25" width="150" height="150">
+            <figcaption>Ban Dalam 17.5 - 25</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 18.4 - 30.png" alt="Ban Dalam 18.4 - 30" width="150" height="150">
+            <figcaption>Ban Dalam 18.4 - 30</figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 20.5 - 25.png" alt="Ban Dalam 20.5 - 25" width="150" height="150">
+            <figcaption>Ban Dalam 20.5 - 25</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM 28.9 - 15.png" alt="Ban Dalam 28.9 - 15" width="150" height="150">
+            <figcaption>Ban Dalam 28.9 - 15</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN DALAM ARTCO.png" alt="Ban Dalam ARTCO" width="150" height="150">
+            <figcaption>Ban Dalam ARTCO</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN LUAR 7.00 - 12.png" alt="Ban Luar 7.00 - 12" width="150" height="150">
+            <figcaption>Ban Luan 7.00 - 12</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN LUAR 9.00 - 20.png" alt="Ban Luar 9.00 - 20" width="150" height="150">
+            <figcaption>Ban Luan 9.00 - 20</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN LUAR 12.4 - 24.png" alt="Ban Luar 12.4 - 24" width="150" height="150">
+            <figcaption>Ban Luan 12.4 - 24</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN LUAR 18.4 - 30.png" alt="Ban Luar 18.4 - 30" width="150" height="150">
+            <figcaption>Ban Luan 18.4 - 30</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN LUAR ARTCO CW VELG.png" alt="Ban Luar ARTCO c/w velg" width="150" height="150">
+            <figcaption>Ban Luan Luar ARTCO c/w velg</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BAN MATI ARTCO CW VELG.png" alt="Ban Mati ARTCO c/w velg" width="150" height="150">
+            <figcaption>Ban Luan Mati ARTCO c/w velg</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU ASAH.png" alt="Batu Asah" width="150" height="150">
+            <figcaption>Batu Asah</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH BOSCH 4 INCHI.png" alt="Batu Gerinda Asah BOSCH 4 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Asah BOSCH 4" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH BOSCH 7 INCHI.png" alt="Batu Gerinda Asah BOSCH 7 Inchi"  width="150" height="150">
+            <figcaption>Batu Gerinda Asah BOSCH 7" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH DONGIL 5 INCHI.png" alt="Batu Gerinda Asah DONGIL 5 Inchi"  width="150" height="150">
+            <figcaption>Batu Gerinda Asah DONGIL 5" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH NIPPON RESIBON 4 INCHI.png" alt="Batu Gerinda Asah NIPPON RESIBON 4 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Asah NIPPON RESIBON 4" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH NIPPON RESIBON 6 INCHI.png" alt="Batu Gerinda Asah NIPPON RESIBON 6 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Asah NIPPON RESIBON 6" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH NIPPON RESIBON 7 INCHI.png" alt="Batu Gerinda Asah NIPPON RESIBON 7 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Asah NIPPON RESIBON 7" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA ASAH ULTRA 4 INCHI.png" alt="Batu Gerinda Asah ULTRA 4 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Asah ULTRA 4" </figcaption>
+        </figure>
+       
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA KREBS.png" alt="Batu Gerinda KREBS" width="150" height="150">
+            <figcaption>Batu Gerinda KREBS </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG BOSCH 4 INCHI - 1,2 MM.png" alt="Batu Gerinda Potong BOSCH 4 Inchi - 1,2 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong BOSCH 4 - 1,2 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG BOSCH 4 INCHI - 2 MM.png" alt="Batu Gerinda Potong BOSCH 4 Inchi - 2 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong BOSCH 4 - 2 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG BOSCH 7 INCHI.png" alt="Batu Gerinda Potong BOSCH 7 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong BOSCH 7" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG BOSCH 14 INCHI.png" alt="Batu Gerinda Potong BOSCH 14 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong BOSCH 14" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG BWS 4 INCHI - 1,2 MM.png" alt="Batu Gerinda Potong BWS 4 Inchi - 1,2 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong BWS 4" - 1,2 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG DONGIL 7 INCHI.png" alt="Batu Gerinda Potong DONGIL 7 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong DONGIL 7"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG ENKA 4 INCHI - 1,2 MM.png" alt="Batu Gerinda Potong ENKA 4 Inchi - 1,2 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong ENKA 4" - 1,2 mm</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG HASSTON 4 INCHI - 1 MM.png" alt="Batu Gerinda Potong HASSTON 4 Inchi - 1 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong HASSTON 4" - 1 mm</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG HASSTON 14 INCHI.png" alt="Batu Gerinda Potong HASSTON 14 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong HASSTON 14"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG KERAMIK CASAL TURBO 4 INCHI.png" alt="Batu Gerinda Potong Keramik CASAL Turbo 4 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong Keramik CASAL Turbo 4"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG NIPPON RESIBON 4 INCHI RSC.png" alt="Batu Gerinda Potong NIPPON RESIBON 4 Inchi - RSC" width="150" height="150">
+            <figcaption>Batu Gerinda Potong NIPPON RESIBON 4" - RSC</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG NIPPON RESIBON 14 INCHI.png" alt="Batu Gerinda Potong NIPPON RESIBON 14 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong NIPPON RESIBON 14"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG NIPPON RESIBON 16 INCHI.png" alt="Batu Gerinda Potong NIPPON RESIBON 16 Inchi" width="150" height="150">
+            <figcaption>Batu Gerinda Potong NIPPON RESIBON 16"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG ULTRA 4 INCHI - 1,2 MM.png" alt="Batu Gerinda Potong ULTRA 4 Inchi - 1,2 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong ULTRA 4" - 1,2 mm</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BATU GERINDA POTONG ULTRA 4 INCHI - 2 MM.png" alt="Batu Gerinda Potong ULTRA 4 Inchi - 2 mm" width="150" height="150">
+            <figcaption>Batu Gerinda Potong ULTRA 4" - 2 mm</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BEARING ARTCO.png" alt="Bearing ARTCO" width="150" height="150">
+            <figcaption>Bearing ARTCO</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BEARING NTN.png" alt="Bearing NTN" width="150" height="150">
+            <figcaption>Bearing NTN</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BLANDER LAS KARBIT GLOOR.png" alt="Blander Las Karbit GLOOR" width="150" height="150">
+            <figcaption>Blander Las Karbit GLOOR</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BLOWER WESTCO.png" alt="Blower WETSCO" width="150" height="150">
+            <figcaption>Blower WESTCO</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED  5 W.png" alt="Bola Lampu LEXICON LED 5 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 5 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED  7 W.png" alt="Bola Lampu LEXICON LED 7 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 7 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED  9 W.png" alt="Bola Lampu LEXICON LED 9 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 9 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED 12 W.png" alt="Bola Lampu LEXICON LED 12 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 12 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED 15 W.png" alt="Bola Lampu LEXICON LED 15 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 15 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED 18 W.png" alt="Bola Lampu LEXICON LED 18 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 18 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED 30 W.png" alt="Bola Lampu LEXICON LED 30 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 30 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU LEXICON LED 40 W.png" alt="Bola Lampu LEXICON LED 40 W" width="150" height="150">
+            <figcaption>Bola Lampu LEXICON LED 40 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS ESSENTIAL 11 W.png" alt="Bola Lampu PHILIPS Essential 11 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Essential 11 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS ESSENTIAL 14 W.png" alt="Bola Lampu PHILIPS Essential 14 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Essential 14 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS ESSENTIAL 18 W.png" alt="Bola Lampu PHILIPS Essential 18 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Essential 18 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS ESSENTIAL 23 W.png" alt="Bola Lampu PHILIPS Essential 23 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Essential 23 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED  4 W.png" alt="Bola Lampu PHILIPS LED 4 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 4 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED  6 W.png" alt="Bola Lampu PHILIPS LED 6 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 6 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED  7,5 W.png" alt="Bola Lampu PHILIPS LED 7,5 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 7,5 W (Emergency) (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED  8 W.png" alt="Bola Lampu PHILIPS LED 8 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 8 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED  9 W.png" alt="Bola Lampu PHILIPS LED 9 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 9 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED 10 W.png" alt="Bola Lampu PHILIPS LED 10 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 10 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED 11 W.png" alt="Bola Lampu PHILIPS LED 11 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 11 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED 12 W.png" alt="Bola Lampu PHILIPS LED 12 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 12 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS LED 30 W.png" alt="Bola Lampu PHILIPS LED 30 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS LED 30 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS PIJAR 25 W.png" alt="Bola Lampu PHILIPS Pijar 25 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Pijar 25 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS PIJAR 60 W.png" alt="Bola Lampu PHILIPS Pijar 60 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Pijar 60 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS TL 10 W.png" alt="Bola Lampu PHILIPS TL 10 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS TL 10 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS TL 18 W.png" alt="Bola Lampu PHILIPS TL 18 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS TL 18 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS TL 36 W.png" alt="Bola Lampu PHILIPS TL 18 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS TL 18 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS TORNADO 15 W.png" alt="Bola Lampu PHILIPS Tornado 15 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Tornado 15 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS TORNADO 20 W.png" alt="Bola Lampu PHILIPS Tornado 20 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Tornado 20 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOLA LAMPU PHILIPS TORNADO 24 W.png" alt="Bola Lampu PHILIPS Tornado 24 W" width="150" height="150">
+            <figcaption>Bola Lampu PHILIPS Tornado 24 W (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR ATS BB 13 X 28.png" alt="Bor ATS BB 13 x 28" width="150" height="150">
+            <figcaption>Bor ATS BB 13 x 28 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOT ATS BL - 13.png" alt="Bor ATS BL - 13" width="150" height="150">
+            <figcaption>Bor ATS BL - 13 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR BOSCH GBM 400.png" alt="Bor BOSCH GBM 400" width="150" height="150">
+            <figcaption>Bor BOSCH GBM 400  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR BOSCH GSB 10.png" alt="Bor BOSCH GSB 10" width="150" height="150">
+            <figcaption>Bor BOSCH GSB 10  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR BOSCH GSB 10 RE.png" alt="Bor BOSCH GSB 10 RE" width="150" height="150">
+            <figcaption>Bor BOSCH GSB 10 RE </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR BOSCH GSB 600.png" alt="Bor BOSCH GSB 600" width="150" height="150">
+            <figcaption>Bor BOSCH GSB 600 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR MAKITA HD 1630.png" alt="Bor MAKITA HD 1630" width="150" height="150">
+            <figcaption>Bor MAKITA HD 1630 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOR MAKITA M 600 B.png" alt="Bor MAKITA M 600 B" width="150" height="150">
+            <figcaption>Bor MAKITA M 600 B </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOX MCB 1 LOBANG.png" alt="Box MCB 1 Lobang" width="150" height="150">
+            <figcaption>Box MCB 1 Lobang (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOX MCB PRESTO 4 LOBANG.png" alt="Box MCB PRESTO 4 Lobang" width="150" height="150">
+            <figcaption>Box MCB PRESTO 4 Lobang (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/BOX MCB PRESTO 6 LOBANG.png" alt="Box MCB PRESTO 6 Lobang" width="150" height="150">
+            <figcaption>Box MCB PRESTO 6 Lobang (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CANGKUL.png" alt="Cangkul" width="150" height="150">
+            <figcaption>Cangkul </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CARTRIDGE RESPIRATOR RC 203.png" alt="Cartridge Respirator RC 203" width="150" height="150">
+            <figcaption>Cartridge Respirator BLUE EAGLE RC 203 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT JOTUN KUNING.png" alt="Cat JOTUN Kuning" width="150" height="150">
+            <figcaption>Cat JOTUN Kuning </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT KANSAI @ 5 KG.png" alt="Cat KANSAI @ 5 Kg" width="150" height="150">
+            <figcaption>Cat KANSAI @ 5 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT KUDA TERBANG @ 1 KG.png" alt="Cat KUDA TERBANG @ 1 Kg" width="150" height="150">
+            <figcaption>Cat KUDA TERBANG @ 1 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT MARINE COATING ANTI FOULING @ 5 KG.png" alt="Cat Marine Coating Anti Fouling @ 5 Kg" width="150" height="150">
+            <figcaption>Cat Marine Coating Anti Fouling @ 5 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT MENI BESI GENDANG @ 1 KG.png" alt="Cat Meni Besi GENDANG @ 1 Kg" width="150" height="150">
+            <figcaption>Cat Meni Besi GENDANG @ 1 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT MENI BESI PLATONE @ 5 KG.png" alt="Cat Meni Besi PLATONE @ 5 Kg" width="150" height="150">
+            <figcaption>Cat Meni Besi PLATONE @ 5 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT NIPPELUX ENAMEL @ 5 KG.png" alt="Cat Nippelux Enamel @ 5 Kg" width="150" height="150">
+            <figcaption>Cat Nippelux Enamel @ 5 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT NIPPON PAINT @ 1 KG.png" alt="Cat NIPPON PAINT @ 1 Kg" width="150" height="150">
+            <figcaption>Cat NIPPON PAINT @ 1 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT NIPPON PAINT @ 5 KG.png" alt="Cat NIPPON PAINT @ 5 Kg" width="150" height="150">
+            <figcaption>Cat NIPPON PAINT @ 5 Kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT PYLOX BASIC.png" alt="Cat PYLOX Basic" width="150" height="150">
+            <figcaption>Cat PYLOX Basic </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT PYLOX.png" alt="Cat PYLOX " width="150" height="150">
+            <figcaption>Cat PYLOX  </figcaption>
+        </figure>
+
+          <figure>
+            <img src="FOTO PRODUK/CAT TEMBOK PLATONE @ 5 KG.png" alt="Cat Tembok NIPPON @ 5 Kg " width="150" height="150">
+            <figcaption>Cat Tembok NIPPON @ 5 Kg  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT TEMBOK NIPPON @ 20 KG.png" alt="Cat Tembok NIPPON @ 20 Kg " width="150" height="150">
+            <figcaption>Cat Tembok NIPPON @ 20 Kg  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CAT ZINC CHROMATE @ 5 KG HIJAU.png" alt="Cat Zinc Chromate @ 5 Kg Hijau " width="150" height="150">
+            <figcaption>Cat Zinc Chromate @ 5 Kg Hijau </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CHAINSAW MULTIPRO CSS - 2258.png" alt="Chainsaw MULTIPRO CSS - 2258 " width="150" height="150">
+            <figcaption>Chainsaw MULTIPRO CSS - 2258 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CHARGER AKI MAXTRON CB 20.png" alt="Charger Aki MAXTRON CB 20 " width="150" height="150">
+            <figcaption>Charger Aki MAXTRON CB 20 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CHARGER AKI MAXTRON CB 30.png" alt="Charger Aki MAXTRON CB 30 " width="150" height="150">
+            <figcaption>Charger Aki MAXTRON CB 30 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CONTACT CLEANER C & C.png" alt="Contact Cleaner C & C " width="150" height="150">
+            <figcaption>Contact Cleaner C & C (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CONTACT CLEANER CRC.png" alt="Contact Cleaner CRC " width="150" height="150">
+            <figcaption>Contact Cleaner CRC (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TIP CHIYODA STRONG 8.png" alt="Cutting Tip CHIYODA Strong 8 " width="150" height="150">
+            <figcaption>Cutting Tip CHIYODA Strong 8 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TIP CHIYODA STRONG 25.png" alt="Cutting Tip CHIYODA Strong 25 " width="150" height="150">
+            <figcaption>Cutting Tip CHIYODA Strong 25 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TIP KOIKE 106 NO 2.png" alt="Cutting Tip KOIKE 106 No 2 " width="150" height="150">
+            <figcaption>Cutting Tip KOIKE 106 No 2 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TIP MORRIS STRONG 8.png" alt="Cutting Tip MORRIS Strong 8 " width="150" height="150">
+            <figcaption>Cutting Tip MORRIS Strong 8</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TIP MORRIS STRONG 25.png" alt="Cutting Tip MORRIS Strong 25 " width="150" height="150">
+            <figcaption>Cutting Tip MORRIS Strong 25</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TIP VIKTOR.png" alt="Cutting Tip VIKTOR " width="150" height="150">
+            <figcaption>Cutting Tip VIKTOR</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TORCH CHIYODA STRONG 8.png" alt="Cutting Torch CHIYODA Strong 8  " width="150" height="150">
+            <figcaption>Cutting Torch CHIYODA Strong 8</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TORCH CHIYODA STRONG 25.png" alt="Cutting Torch CHIYODA Strong 25  " width="150" height="150">
+            <figcaption>Cutting Torch CHIYODA Strong 25</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TORCH MORRIS STRONG 8.png" alt="Cutting Torch MORRIS Strong 8  " width="150" height="150">
+            <figcaption>Cutting Torch MORRIS Strong 8</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TORCH MORRIS STRONG 25.png" alt="Cutting Torch MORRIS Strong 25  " width="150" height="150">
+            <figcaption>Cutting Torch MORRIS Strong 25</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/CUTTING TORCH YAMATO.png" alt="Cutting Torch YAMATO  " width="150" height="150">
+            <figcaption>Cutting Torch YAMATO</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL MASTERLIFT  2 TON.png" alt="Dongkrak Botol MASTERLIFT 2 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol MASTERLIFT 2 TON</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL TEKIRO  2 TON.png" alt="Dongkrak Botol TEKIRO 2 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol TEKIRO 2 TON</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL TEKIRO  4 TON.png" alt="Dongkrak Botol TEKIRO 4 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol TEKIRO 4 TON</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL TEKIRO  6 TON.png" alt="Dongkrak Botol TEKIRO 6 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol TEKIRO 6 TON</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL TEKIRO 10 TON.png" alt="Dongkrak Botol TEKIRO 10 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol TEKIRO 10 TON</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL TEKIRO 15 TON.png" alt="Dongkrak Botol TEKIRO 15 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol TEKIRO 15 TON</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/DONGKRAK BOTOL TEKIRO 20 TON.png" alt="Dongkrak Botol TEKIRO 20 TON  " width="150" height="150">
+            <figcaption>Dongkrak Botol TEKIRO 20 TON</figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/EAR MUFF BLUE EAGLE EM 65.png" alt="Ear Muff BLUE EAGLE EM 65  " width="150" height="150">
+            <figcaption>Ear Muff BLUE EAGLE EM 65 (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/EAR MUFF BLUE EAGLE EM 92.png" alt="Ear Muff BLUE EAGLE EM 92  " width="150" height="150">
+            <figcaption>Ear Muff BLUE EAGLE EM 92 (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/EAR MUFF XP TOOP.png" alt="Ear Muff XP TOOL  " width="150" height="150">
+            <figcaption>Ear Muff XP TOOL (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/EAR PLUG 3 M CW CASING ULTRA FIT.png" alt="Ear Plug 3 M c/w Casing Ultra Fit  " width="150" height="150">
+            <figcaption>Ear Plug 3 M c/w Casing Ultra Fit (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/EAR PLUG BLUE EAGLE.png" alt="Ear Plug BLUE EAGLE  " width="150" height="150">
+            <figcaption>Ear Plug BLUE EAGLE (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/EAR PLUG GOSAVE.png" alt="Ear Plug GOSAVE  " width="150" height="150">
+            <figcaption>Ear Plug GOSAVE (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/EAR PLUG KRISBOW.png" alt="Ear Plug KRISBOW  " width="150" height="150">
+            <figcaption>Ear Plug KRISBOW (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/EAR PLUG KUNING.png" alt="Ear Plug Kuning  " width="150" height="150">
+            <figcaption>Ear Plug Kuning (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ENGSEL FREEDOM 3 INCHI.png" alt="Engsel FREEDOM 3 Inchi " width="150" height="150">
+            <figcaption>Engsel FREEDOM 3"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ENGSEL FREEDOM 4 INCHI.png" alt="Engsel FREEDOM 4 Inchi " width="150" height="150">
+            <figcaption>Engsel FREEDOM 4"</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FACE GUARD (KEDOK LAS GERINDA) KDK.png" alt="Face Guard (Kedok Las Gerinda) KDK " width="150" height="150">
+            <figcaption>Face Guard (Kedok Las Gerinda) KDK </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FACE GUARD BLUE EAGLE (FRAME A 2).png" alt="Face Guard BLUE EAGLE (Frame A 2) " width="150" height="150">
+            <figcaption>Face Guard BLUE EAGLE (Frame A 2) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FACE GUARD BLUE EAGLE FC 48 (CLEAR).png" alt="Face Guard BLUE EAGLE FC 48 (Clear) " width="150" height="150">
+            <figcaption>Face Guard BLUE EAGLE FC 48 (Clear) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FACE GUARD BLUE EAGLE FC 48 G 5 (BLACK).png" alt="Face Guard BLUE EAGLE FC 48 G 5 (Black) " width="150" height="150">
+            <figcaption>Face Guard BLUE EAGLE FC 48 G 5 (Black) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FITIING GANTUNG BROCO.png" alt="Fitting Gantung BROCO " width="150" height="150">
+            <figcaption>Fitting Gantung BROCO (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FITTING LAMPU MERKURI + KAP HIJAU.png" alt="Fitting Lampu Merkuri + Kap Hijau " width="150" height="150">
+            <figcaption>Fitting Lampu Merkuri + Kap Hijau (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FITTING PLAFON BROCO.png" alt="Fitting Plafon BROCO " width="150" height="150">
+            <figcaption>Fitting Plafon BROCO (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FLARING TOOL.png" alt="Flaring Tool " width="150" height="150">
+            <figcaption>Flaring Tool </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/FUSE AUTO BREAKER FUJI.png" alt="Fuse Auto Breaker FUJI " width="150" height="150">
+            <figcaption>Fuse Auto Breaker FUJI (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GAGANG GERGAJI BESI FREED.png" alt="Gagang Gergaji Besi FREED " width="150" height="150">
+            <figcaption>Gagang Gergaji Besi FREED </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GAGANG GERGAJI BESI TOSITA.png" alt="Gagang Gergaji Besi TOSITA " width="150" height="150">
+            <figcaption>Gagang Gergaji Besi TOSITA </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GATE VALVE 1 INCHI.png" alt="Gate Valve 1 Inchi " width="150" height="150">
+            <figcaption>Gate Valve 1" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GATE VALVE 1,5 INCHI.png" alt="Gate Valve 1,5 Inchi " width="150" height="150">
+            <figcaption>Gate Valve 1,5" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GATE VALVE 2 INCHI.png" alt="Gate Valve 2 Inchi " width="150" height="150">
+            <figcaption>Gate Valve 2" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK HITAM GLOBE 75 MM.png" alt="Gembok Hitam GLOBE 75 mm " width="150" height="150">
+            <figcaption>Gembok Hitam GLOBE 75 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK HITAM VYBA 50 MM.png" alt="Gembok Hitam VYBA 50 mm " width="150" height="150">
+            <figcaption>Gembok Hitam VYBA 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN ATS 25 MM.png" alt="Gembok Kuningan ATS 25 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan ATS 25 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN ATS 40 MM.png" alt="Gembok Kuningan ATS 40 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan ATS 40 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN ATS 50 MM.png" alt="Gembok Kuningan ATS 50 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan ATS 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN FREED 38 MM.png" alt="Gembok Kuningan FREED 38 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan FREED 38 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN FREED 50 MM.png" alt="Gembok Kuningan FREED 50 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan FREED 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN GLION 50 MM.png" alt="Gembok Kuningan GLION 50 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan GLION 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN PERRUNO 40 MM.png" alt="Gembok Kuningan PERRUNO 40 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan PERRUNO 40 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK KUNINGAN PERRUNO 50 MM.png" alt="Gembok Kuningan PERRUNO 50 mm " width="150" height="150">
+            <figcaption>Gembok Kuningan PERRUNO 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ACCURA 50 MM GG. PANJANG.png" alt="Gembok S/Steel ACCURA 50 mm GG. Panjang " width="150" height="150">
+            <figcaption>Gembok S/Steel ACCURA 50 mm GG. Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL AOTU 40 MM.png" alt="Gembok S/Steel AOTU 40 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel AOTU 40 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL AOTU 50 MM.png" alt="Gembok S/Steel AOTU 50 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel AOTU 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL AOTU 60 MM.png" alt="Gembok S/Steel AOTU 60 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel AOTU 60 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 30 MM.png" alt="Gembok S/Steel ATS 30 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 30 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 40 MM GG. PANJANG.png" alt="Gembok S/Steel ATS 40 mm GG. Panjang " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 40 mm GG. Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 40 MM.png" alt="Gembok S/Steel ATS 40 mm  " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 40 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 50 MM.png" alt="Gembok S/Steel ATS 50 mm  " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 50 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 60 MM GG. PANJNAG.png" alt="Gembok S/Steel ATS 60 mm GG. Panjang " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 60 mm GG. Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 60 MM.png" alt="Gembok S/Steel ATS 60 mm  " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 60 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL ATS 70 MM GG. PANJANG.png" alt="Gembok S/Steel ATS 70 mm GG. Panjang " width="150" height="150">
+            <figcaption>Gembok S/Steel ATS 70 mm GG. Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL CAP MATA 40 MM.png" alt="Gembok S/Steel Cap MATA 40 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel Cap MATA 40 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL CAP MATA 50 MM.png" alt="Gembok S/Steel Cap MATA 50 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel Cap MATA 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL CAP MATA 60 MM.png" alt="Gembok S/Steel Cap MATA 60 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel Cap MATA 60 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL CAP MATA 70 MM.png" alt="Gembok S/Steel Cap MATA 70 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel Cap MATA 70 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL FREED 94 MM.png" alt="Gembok S/Steel FREED 94 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel FREED 94 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL NLG 60 MM.png" alt="Gembok S/Steel NLG 60 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel NLG 60 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL TORA 50 MM.png" alt="Gembok S/Steel TORA 50 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel TORA 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL TORA 60 MM.png" alt="Gembok S/Steel TORA 60 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel TORA 60 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL TOSITA 50 MM.png" alt="Gembok S/Steel TOSITA 50 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel TOSITA 50 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL TOSITA 60 MM GG. PANJANG.png" alt="Gembok S/Steel TOSITA 60 mm GG. Panjang " width="150" height="150">
+            <figcaption>Gembok S/Steel TOSITA 60 mm GG. Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEMBOK S-STEEL TOSITA 60 MM.png" alt="Gembok S/Steel TOSITA 60 mm " width="150" height="150">
+            <figcaption>Gembok S/Steel TOSITA 60 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GENSET MULTIPRO.png" alt="Genset MULTIPRO " width="150" height="150">
+            <figcaption>Genset MULTIPRO </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERGAJI KAYU TOSITA 20 INCHI.png" alt="Gergaji Kayu TOSITA 20 Inchi " width="150" height="150">
+            <figcaption>Gergaji Kayu TOSITA 20" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA BITEC 4 INCHI GM 6 - 100.png" alt="Gerinda BITEC 4 Inchi GM 6 - 100 " width="150" height="150">
+            <figcaption>Gerinda BITEC 4" GM 6 - 100 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA BOSCH 4 INCHI GWS 700.png" alt="Gerinda BOSCH 4 Inchi GWS 700 " width="150" height="150">
+            <figcaption>Gerinda BOSCH 4" GWS 700 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA BOSCH 7 INCHI GWS 2200.png" alt="Gerinda BOSCH 7 Inchi GWS 2200 " width="150" height="150">
+            <figcaption>Gerinda BOSCH 7" GWS 2200 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA BOSCH 14 INCHI GCO 220.png" alt="Gerinda BOSCH 14 Inchi GCO 220 " width="150" height="150">
+            <figcaption>Gerinda BOSCH 14" GCO 220 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA DUDUK ORANGE 6 INCHI.png" alt="Gerinda Duduk ORANGE 6 Inchi " width="150" height="150">
+            <figcaption>Gerinda Duduk ORANGE 6" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA HYUNDAI 4 INCHI.png" alt="Gerinda HYUNDAI 4 Inchi " width="150" height="150">
+            <figcaption>Gerinda HYUNDAI 4" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA MAKITA 4 INCHI 9553 B.png" alt="Gerinda MAKITA 4 Inchi 9553 B " width="150" height="150">
+            <figcaption>Gerinda MAKITA 4" 9553 B </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA MAKITA 4 INCHI M 9000 B.png" alt="Gerinda MAKITA 4 Inchi M 9000 B " width="150" height="150">
+            <figcaption>Gerinda MAKITA 4" M 9000 B </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GERINDA SKILL 4 INCHI 9133.png" alt="Gerinda SKILL 4 Inchi 9133 " width="150" height="150">
+            <figcaption>Gerinda SKILL 4" 9133 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEROBAK ARTCO.png" alt="Gerobak ARTCO " width="150" height="150">
+            <figcaption>Gerobak ARTCO </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GEROBAK SORONG FIBRE.png" alt="Gerobak SORONG Fibre " width="150" height="150">
+            <figcaption>Gerobak SORONG Fibre </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GREASE ROTARY @ 16 KG.png" alt="Grease ROTARY @ 16 kg " width="150" height="150">
+            <figcaption>Grease ROTARY @ 16 kg </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GUNTING DAHAN AMERITCH.png" alt="Gunting Dahan AMERITECH " width="150" height="150">
+            <figcaption>Gunting Dahan AMERITECH </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GUNTING DAHAN FERZA 8 INCHI.png" alt="Gunting Dahan FERZA 8 Inchi " width="150" height="150">
+            <figcaption>Gunting Dahan FERZA 8" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GUNTING KEMBANG.png" alt="Gunting Kembang " width="150" height="150">
+            <figcaption>Gunting Kembang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GUNTING SENG JETJO 12 INCHI.png" alt="Gunting Seng JETJO 12 Inchi " width="150" height="150">
+            <figcaption>Gunting Seng JETJO 12" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/GUNTING SENG TOSITA 10 INCHI.png" alt="Gunting Seng TOSITA 10 Inchi " width="150" height="150">
+            <figcaption>Gunting Seng TOSITA 10" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/INBOWDUS WEJ 5911 PENDEK.png" alt="Inbowdus WEJ 5911 Pendek " width="150" height="150">
+            <figcaption>Inbowdus WEJ 5911 Pendek (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/INBOWDUS WVJ 5911 PANJANG.png" alt="Inbowdus WVJ 5911 Panjang " width="150" height="150">
+            <figcaption>Inbowdus WEJ 5911 Panjang (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/INNER TOPI ASLAN FASTRACK.png" alt="Inner Topi ASLAN Fastrack " width="150" height="150">
+            <figcaption>Inner Topi ASLAN Fastrack (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/INVERTER RHINO.png" alt="Inverter RHINO " width="150" height="150">
+            <figcaption>Inverter RHINO (Alat Las)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI ANGIN ATS 3 IN 1 + AMPERE.png" alt="Isi Angin ATS 3 in 1 + Ampere " width="150" height="150">
+            <figcaption>Isi Angin ATS 3 in 1 + Ampere </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI ANGIN TACHI.png" alt="Isi Angin TACHI " width="150" height="150">
+            <figcaption>Isi Angin TACHI </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI ANGIN TEKIRO 3 IN 1 + AMPERE.png" alt="Isi Angin TEKIRO 3 in 1 + Ampere " width="150" height="150">
+            <figcaption>Isi Angin TEKIRO 3 in 1 + Ampere </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI ANGIN TEKIRO 6 INCHI.png" alt="Isi Angin TEKIRO 6 Inchi " width="150" height="150">
+            <figcaption>Isi Angin TEKIRO 6" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI ANGIN TORA PANJANG.png" alt="Isi Angin TORA Panjang " width="150" height="150">
+            <figcaption>Isi Angin TORA Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI CUTTER KENKO L - 150.png" alt="Isi Cutter KENKO L - 150 " width="150" height="150">
+            <figcaption>Isi Cutter KENKO L - 150 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI STAPLES TEMBAK RAPIDE 6 MM.png" alt="Isi Staples Tembak RAPIDE 6 mm " width="150" height="150">
+            <figcaption>Isi Staples Tembak RAPIDE 6 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISI STAPLES TEMBAK BENZ 8 MM.png" alt="Isi Staples Tembak BENZ 8 mm " width="150" height="150">
+            <figcaption>Isi Staples Tembak BENZ 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISOLASI NITTO HITAM.png" alt="Isolasi NITTO Hitam " width="150" height="150">
+            <figcaption>Isolasi NITTO Hitam (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ISOLASI NITTO MERAH.png" alt="Isolasi NITTO Merah " width="150" height="150">
+            <figcaption>Isolasi NITTO Merah (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/JAS HUJAN FORTUNE 663.png" alt="Jas hujan FORTUNE 663 " width="150" height="150">
+            <figcaption>Jas hujan FORTUNE 663 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/JAS HUJAN FORTUNE F 263 I SETELAN.png" alt="Jas hujan FORTUNE F 263 i (Setelan) " width="150" height="150">
+            <figcaption>Jas hujan FORTUNE F 263 i (Setelan) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/JAS HUJAN SNAKE 215 POCHO.png" alt="Jas hujan SNAKE 215 (Poncho) " width="150" height="150">
+            <figcaption>Jas hujan SNAKE 215 (Poncho) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/JAS HUJAN SNAKE 388 SETELAN.png" alt="Jas hujan SNAKE 388 (Setelan) " width="150" height="150">
+            <figcaption>Jas hujan SNAKE 388 (Setelan) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/JET SHOWER ANLU (700 W).png" alt="Jet Shower ANLU (700 W) " width="150" height="150">
+            <figcaption>Jet Shower ANLU (700 W) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/JET SHOWET CLOSET.png" alt="Jet Shower Closet " width="150" height="150">
+            <figcaption>Jet Shower Closet (Sanitary)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYA 1 X 1,5 MM.png" alt="Kabel ETERNA NYA 1 x 1,5 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 1 x 1,5 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYA 1 X 2,5 MM.png" alt="Kabel ETERNA NYA 1 x 2,5 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 1 x 2,5 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYM 2 X 1,5 MM.png" alt="Kabel ETERNA NYA 2 x 1,5 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 2 x 1,5 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYM 2 X 2,5 MM.png" alt="Kabel ETERNA NYA 2 x 2,5 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 2 x 2,5 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYM 3 X 2,5 MM.png" alt="Kabel ETERNA NYA 3 x 2,5 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 3 x 2,5 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYM 3 X 4 MM.png" alt="Kabel ETERNA NYA 3 x 4 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 3 x 4 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ETERNA NYM 4 X 2,5 MM.png" alt="Kabel ETERNA NYA 4 x 2,5 mm " width="150" height="150">
+            <figcaption>Kabel ETERNA NYA 4 x 2,5 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL LAS PROFLEX 35 MM.png" alt="Kabel Las PROFLEX 35 mm " width="150" height="150">
+            <figcaption>Kabel Las PROFLEX 35 mm (Alat Las) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL LAS PROFLEX 50 MM.png" alt="Kabel Las PROFLEX 50 mm " width="150" height="150">
+            <figcaption>Kabel Las PROFLEX 50 mm (Alat Las)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL LAS PROFLEX 70 MM.png" alt="Kabel Las PROFLEX 70 mm " width="150" height="150">
+            <figcaption>Kabel Las PROFLEX 70 mm (Alat Las)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL LAS SUPER SUNFLEX 50 MM.png" alt="Kabel Las SUPER SUNFLEX 50 mm " width="150" height="150">
+            <figcaption>Kabel Las SUPER SUNFLEX 50 mm (Alat Las)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL LAS SUPER SUNFLEX 70 MM.png" alt="Kabel Las SUPER SUNFLEX 70 mm " width="150" height="150">
+            <figcaption>Kabel Las SUPER SUNFLEX 70 mm (Alat Las)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL ROLL HINOHIKARI 10 MTR.png" alt="Kabel Roll HINOHIKARI 10 Mtr " width="150" height="150">
+            <figcaption>Kabel Roll HINOHIKARI 10 Mtr (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL SCORE NYM - HY 2 X 0,75 MM.png" alt="Kabel Score NYM - HY 2 x 0,75 mm " width="150" height="150">
+            <figcaption>Kabel Score NYM - HY 2 x 0,75 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TIES 100 MM.png" alt="Kabel Ties 100 mm " width="150" height="150">
+            <figcaption>Kabel Ties 100 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TIES 150 MM.png" alt="Kabel Ties 150 mm " width="150" height="150">
+            <figcaption>Kabel Ties 150 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TIES 200 MM.png" alt="Kabel Ties 200 mm " width="150" height="150">
+            <figcaption>Kabel Ties 200 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TIES 250 MM.png" alt="Kabel Ties 250 mm " width="150" height="150">
+            <figcaption>Kabel Ties 250 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TIES 300 MM.png" alt="Kabel Ties 300 mm " width="150" height="150">
+            <figcaption>Kabel Ties 300 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TIES 400 MM.png" alt="Kabel Ties 400 mm " width="150" height="150">
+            <figcaption>Kabel Ties 400 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TRANSPARAN 2 X 30 MM.png" alt="Kabel Transparan 2 x 30 mm " width="150" height="150">
+            <figcaption>Kabe  Transparan 2 x 30 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TRANSPARAN 2 X 50 MM.png" alt="Kabel Transparan 2 x 50 mm " width="150" height="150">
+            <figcaption>Kabel Transparan 2 x 50 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KABEL TRANSPARAN 2 X 80 MM.png" alt="Kabel Transparan 2 x 80 mm " width="150" height="150">
+            <figcaption>Kabel Transparan 2 x 80 mm (Elektrik)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACA CEMBUNG.png" alt="Kaca Cembung " width="150" height="150">
+            <figcaption>Kaca Cembung </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACA LAS BENING.png" alt="Kaca Las Bening " width="150" height="150">
+            <figcaption>Kaca Las Bening </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACA LAS HITAM.png" alt="Kaca Las Hitam " width="150" height="150">
+            <figcaption>Kaca Las Hitam </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS BENING.png" alt="Kacamata Las Bening " width="150" height="150">
+            <figcaption>Kacamata Las Bening </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS BESAFE BENING.png" alt="Kacamata Las BESAFE Bening " width="150" height="150">
+            <figcaption>Kacamata Las BESAFE Bening </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS BLUE EAGLE BENING.png" alt="Kacamata Las BLUE EAGLE Bening " width="150" height="150">
+            <figcaption>Kacamata Las BLUE EAGLE Bening </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS E 360 HITAM.png" alt="Kacamata Las E 360 Hitam " width="150" height="150">
+            <figcaption>Kacamata Las E 360 Hitam </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS HITAM ABU.png" alt="Kacamata Las Hitam Abu " width="150" height="150">
+            <figcaption>Kacamata Las Hitam Abu </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS HITAM.png" alt="Kacamata Las Hitam  " width="150" height="150">
+            <figcaption>Kacamata Las Hitam  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS JASON DOUBLE.png" alt="Kacamata Las JASON Double  " width="150" height="150">
+            <figcaption>Kacamata Las JASON Double  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS KINGS HITAM.png" alt="Kacamata Las KINGS Hitam  " width="150" height="150">
+            <figcaption>Kacamata Las KINGS Hitam  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA LAS TECHNO HITAM.png" alt="Kacamata Las TECHNO Hitam  " width="150" height="150">
+            <figcaption>Kacamata Las TECHNO Hitam  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA SKF BLUE EAGLE.png" alt="Kacamata SKF BLUE EAGLE  " width="150" height="150">
+            <figcaption>Kacamata SKF BLUE EAGLE  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KACAMATA SKF.png" alt="Kacamata SKF  " width="150" height="150">
+            <figcaption>Kacamata SKF  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAIN MAJUN WARNA.png" alt="Kain Majun Warna  " width="150" height="150">
+            <figcaption>Kain Majun Warna  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAPUR BESI.png" alt="Kapur Besi  " width="150" height="150">
+            <figcaption>Kapur Besi  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KARET TAMBAL BANU TUBELESS OSSIP.png" alt="Karet Tambal Ban Tubeless OSSIP  " width="150" height="150">
+            <figcaption>Karet Tambal Ban Tubeless OSSIP  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS HV 600 - 3,2 MM.png" alt="Kawat Las HV 600 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las HV 600 - 3,2 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS HV 600 - 4 MM.png" alt="Kawat Las HV 600 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las HV 600 - 4 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS KUNINGAN 3 MM.png" alt="Kawat Las Kuningan 3 mm  " width="150" height="150">
+            <figcaption>Kawat Las Kuningan 3 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS KUNINGAN 4 MM.png" alt="Kawat Las Kuningan 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las Kuningan 4 mm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS LB 52 - 2,6 MM.png" alt="Kawat Las LB 52 - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las LB 52 - 2,6 mm (PMRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS LB 52 - 3,2 MM.png" alt="Kawat Las LB 52 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las LB 52 - 3,2 mm (PSRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS LB 52 - 4 MM.png" alt="Kawat Las LB 52 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las LB 52 - 4 mm (PSRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS LB 52 U - 2,6 MM.png" alt="Kawat Las LB 52 U - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las LB 52 U - 2,6 mm (MWRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS LB 52 U - 3,2 MM.png" alt="Kawat Las LB 52 U - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las LB 52 U - 3,2 mm (MTRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS LB 52 U - 4 MM.png" alt="Kawat Las LB 52 U - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las LB 52 U - 4 mm (MTRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RB 26 - 2,6 MM.png" alt="Kawat Las RB 26 - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las RB 26 - 2,6 mm (GERHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RB 26 - 3,2 MM.png" alt="Kawat Las RB 26 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las RB 26 - 3,2 mm (GPRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RB 26 - 4 MM.png" alt="Kawat Las RB 26 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las RB 26 - 4 mm (GPRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RC 8 - 2,6 MM.png" alt="Kawat Las RC 8 - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las RC 8 - 2,6 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RC 8 - 3,2 MM.png" alt="Kawat Las RC 8 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las RC 8 - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RD 260 - 2,6 MM.png" alt="Kawat Las RD 260 - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las RD 260 - 2,6 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RD 260 - 3,2 MM.png" alt="Kawat Las RD 260 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las RD 260 - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RD 260 - 4 MM.png" alt="Kawat Las RD 260 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las RD 260 - 4 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RD 360 - 3,2 MM.png" alt="Kawat Las RD 360 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las RD 360 - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RD 360 - 4 MM.png" alt="Kawat Las RD 360 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las RD 360 - 4 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS RD 360 - 5 MM.png" alt="Kawat Las RD 360 - 5 mm  " width="150" height="150">
+            <figcaption>Kawat Las RD 360 - 5 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSG - 3,2 MM.png" alt="Kawat Las S/Steel NSG - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSG - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSK 308 L - 3,2 MM.png" alt="Kawat Las S/Steel NSK 308 L - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSK 308 L - 3,2 mm (TWXRHO)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 308 - 2,6 MM.png" alt="Kawat Las S/Steel NSN 308 - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 308 - 2,6 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 308 - 3,2 MM.png" alt="Kawat Las S/Steel NSN 308 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 308 - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 308 - 4 MM.png" alt="Kawat Las S/Steel NSN 308 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 308 - 4 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 309 - 2,6 MM.png" alt="Kawat Las S/Steel NSN 309 - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 309 - 2,6 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 309 - 3,2 MM.png" alt="Kawat Las S/Steel NSN 309 - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 309 - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 309 - 4 MM.png" alt="Kawat Las S/Steel NSN 309 - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 309 - 4 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 309 L - 2,6 MM.png" alt="Kawat Las S/Steel NSN 309 L - 2,6 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 309 L - 2,6 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 309 L - 3,2 MM.png" alt="Kawat Las S/Steel NSN 309 L - 3,2 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 309 L - 3,2 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT LAS S-STEEL NSN 309 L - 4 MM.png" alt="Kawat Las S/Steel NSN 309 L - 4 mm  " width="150" height="150">
+            <figcaption>Kawat Las S/Steel NSN 309 L - 4 mm   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KAWAT SELING.png" alt="Kawat Seling  " width="150" height="150">
+            <figcaption>Kawat Seling   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KEPALA AKI KUNINGAN BESAR.png" alt="Kepala Aki Kuningan Besar " width="150" height="150">
+            <figcaption>Kepala Aki Kuningan Besar  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KERUCUT KARET 45 CM.png" alt="Kerucut Karet 45 cm " width="150" height="150">
+            <figcaption>Kerucut Karet 45 cm (Safety)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KERUCUT KARET 70 CM.png" alt="Kerucut Karet 70 cm " width="150" height="150">
+            <figcaption>Kerucut Karet 70 cm (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI BULAT DIAMOND JACK 12 INCHI.png" alt="Kikir Gergaji Bulat DIAMOND JACK 12 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Bulat DIAMOND JACK 12"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI GEPENG ORANGE 10 INCHI.png" alt="Kikir Gergaji Gepeng ORANGE 10 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Gepeng ORANGE 10"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI GEPENG ORANGE 12 INCHI.png" alt="Kikir Gergaji Gepeng ORANGE 12 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Gepeng ORANGE 12"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SEGITIGA BAHCO  4 INCHI.png" alt="Kikir Gergaji Segitiga BAHCO 4 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Segitiga BAHCO 4"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SEGITIGA DAIKEN  4 INCHI.png" alt="Kikir Gergaji Segitiga DAIKEN 4 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Segitiga DAIKEN 4"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SEGITIGA DIAMOND JACK + ORANGE 8 INCHI.png" alt="Kikir Gergaji Segitiga DIAMOND JACK + ORANGE 8 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Segitiga DIAMOND JACK + ORANGE 8"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SEGITIGA DIAMOND JACK 10 INCHI.png" alt="Kikir Gergaji Segitiga DIAMOND JACK 10 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Segitiga DIAMOND JACK 10"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SEGITIGA ORANGE 12 INCHI.png" alt="Kikir Gergaji Segitiga ORANGE 12 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Segitiga ORANGE 12"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SETENGAH BULAT DIAMOND JACK 8 INCHI.png" alt="Kikir Gergaji Setengah Bulat DIAMOND JACK 8 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Setengah Bulat DIAMOND JACK 8"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SETENGAH BULAT ORANGE 10 INCHI.png" alt="Kikir Gergaji Setengah Bulat ORANGE 10 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Setengah Bulat ORANGE 10"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KIKIR GERGAJI SETENGAH BULAT ORANGE 12 INCHI.png" alt="Kikir Gergaji Setengah Bulat ORANGE 12 Inchi " width="150" height="150">
+            <figcaption>Kikir Gergaji Setengah Bulat ORANGE 12"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KLEM SELANG.png" alt="Klem Selang  " width="150" height="150">
+            <figcaption>Klem Selang  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KLEM SELING.png" alt="Klem Seling  " width="150" height="150">
+            <figcaption>Klem Seling  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KOMPOR GAS RINNAI RI - 522 C.png" alt="Kompor Gas RINNAI RI - 522 C  " width="150" height="150">
+            <figcaption>Kompor Gas RINNAI RI - 522 C  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KOMPOR GAS RINNAI RI - 712 A.png" alt="Kompor Gas RINNAI RI - 712 A  " width="150" height="150">
+            <figcaption>Kompor Gas RINNAI RI - 712 A  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KRAN AIR BESI TORA GG. HITAM.png" alt="Kran Air Besi TORA Gagang Hitam  " width="150" height="150">
+            <figcaption>Kran Air Besi TORA Gagang Hitam (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KRAN AIR PLASTIK NEW SANHO (KECIL).png" alt="Kran Air Plastik NEW SANHO (Kecil)  " width="150" height="150">
+            <figcaption>Kran Air Plastik NEW SANHO (Kecil) 1/2" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KRAN AIR PLASTIK NEW SANHO (BESAR).png" alt="Kran Air Plastik NEW SANHO (Besar)  " width="150" height="150">
+            <figcaption>Kran Air Plastik NEW SANHO (Besar) 3/4" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KRAN AIR S-STEEL ARCEL (KECIL).png" alt="Kran Air S/Steel ARCEL (Kecil)  " width="150" height="150">
+            <figcaption>Kran Air S/Steel ARCEL (Kecil) 1/2" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KRAN AIR S-STEEL ARCEL (BESAR).png" alt="Kran Air S/Steel ARCEL (Besar)  " width="150" height="150">
+            <figcaption>Kran Air S/Steel ARCEL (Besar) 3/4" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT SOLIGEN 1 INCHI.png" alt="Kuas Cat SOLIGEN 1 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat SOLIGEN 1" (Alat Cat)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT SOLIGEN 2 INCHI.png" alt="Kuas Cat SOLIGEN 2 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat SOLIGEN 2" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT SOLIGEN 2,5 INCHI.png" alt="Kuas Cat SOLIGEN 2,5 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat SOLIGEN 2,5" (Alat cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT SOLIGEN 3 INCHI.png" alt="Kuas Cat SOLIGEN 3 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat SOLIGEN 3" (Alat cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT SOLIGEN 4 INCHI.png" alt="Kuas Cat SOLIGEN 4 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat SOLIGEN 4" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT STAMVICK 2 INCHI.png" alt="Kuas Cat STAMVICK 2 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat STAMVICK 2" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT STAMVICK 3 INCHI.png" alt="Kuas Cat STAMVICK 3 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat STAMVICK 3" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT STAMVICK 4 INCHI.png" alt="Kuas Cat STAMVICK 4 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat STAMVICK 4" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT WELDOM 4 INCHI.png" alt="Kuas Cat WELDOM 4 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat WELDOM 4" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS CAT YMA 1 INCHI.png" alt="Kuas Cat YMA 1 Inchi  " width="150" height="150">
+            <figcaption>Kuas Cat YMA 1" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL FIA 4 INCHI CW GAGANG.png" alt="Kuas Roll FIA 4 Inchi c/w Gagang " width="150" height="150">
+            <figcaption>Kuas Roll FIA 4" c/w Gagang (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL NEVADA 4 INCHI CW GAGANG.png" alt="Kuas Roll NEVADA 4 Inchi c/w Gagang " width="150" height="150">
+            <figcaption>Kuas Roll NEVADA 4" c/w Gagang (Alat Cat)</figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL NIPPON PAINT 4 INCHI CW GAGANG.png" alt="Kuas Roll NIPPON PAINT 4 Inchi c/w Gagang " width="150" height="150">
+            <figcaption>Kuas Roll NIPPON PAINT 4" c/w Gagang (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL NIPPON PAINT 9 INCHI CW GAGANG.png" alt="Kuas Roll NIPPON PAINT 9 Inchi c/w Gagang " width="150" height="150">
+            <figcaption>Kuas Roll NIPPON PAINT 9" c/w Gagang (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL REFILL FIA 4 INCHI.png" alt="Kuas Roll Refill FIA 4 Inchi  " width="150" height="150">
+            <figcaption>Kuas Roll Refill FIA 4" (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL REFILL NIPPON PANIT 4 INCHI.png" alt="Kuas Roll Refill NIPPON PAINT 4 Inchi  " width="150" height="150">
+            <figcaption>Kuas Roll Refill NIPPON PAINT 4"(Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL REFILL TOSITA 9 INCHI.png" alt="Kuas Roll Refill TOSITA 9 Inchi  " width="150" height="150">
+            <figcaption>Kuas Roll Refill TOSITA 9"(Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL TOSITA 9 INCHI CW GAGANG.png" alt="Kuas Roll TOSITA 9 Inchi c/w Gagang " width="150" height="150">
+            <figcaption>Kuas Roll TOSITA 9" c/w Gagang (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUAS ROLL WINSON 9 INCHI CW GAGANG.png" alt="Kuas Roll WINSON 9 Inchi c/w Gagang " width="150" height="150">
+            <figcaption>Kuas Roll WINSON 9" c/w Gagang (Alat Cat) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI INGGRIS DIAMOND 12 INCHI.png" alt="Kunci Inggris DIAMOND 12 Inchi " width="150" height="150">
+            <figcaption>Kunci Inggris DIAMOND 12" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI INGGRIS MULTIPRO 10 INCHI.png" alt="Kunci Inggris MULTIPRO 10 Inchi " width="150" height="150">
+            <figcaption>Kunci Inggris MULTIPRO 10" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI INGGRIS TEKIRO  8 INCHI.png" alt="Kunci Inggris TEKIRO 8 Inchi " width="150" height="150">
+            <figcaption>Kunci Inggris TEKIRO 8" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI INGGRIS TEKIRO 10 INCHI.png" alt="Kunci Inggris TEKIRO 10 Inchi " width="150" height="150">
+            <figcaption>Kunci Inggris TEKIRO 10" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI INGGRIS TEKIRO 12 INCHI.png" alt="Kunci Inggris TEKIRO 12 Inchi " width="150" height="150">
+            <figcaption>Kunci Inggris TEKIRO 12" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUMCI INGGRIS TEKIRO 15 INCHI.png" alt="Kunci Inggris TEKIRO 15 Inchi " width="150" height="150">
+            <figcaption>Kunci Inggris TEKIRO 15" </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BALL POINT CASAL.png" alt="Kunci L Set Ball Point CASAL " width="150" height="150">
+            <figcaption>Kunci L Set Ball Point CASAL </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BALL POINT TEKIRO (MM).png" alt="Kunci L Set Ball Point TEKIRO " width="150" height="150">
+            <figcaption>Kunci L Set Ball Point TEKIRO </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BIASA ATS (MM).png" alt="Kunci L Set Biasa ATS " width="150" height="150">
+            <figcaption>Kunci L Set Biasa ATS </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BIASA TEKIRO (INCHI).png" alt="Kunci L Set Biasa TEKIRO (Inchi) " width="150" height="150">
+            <figcaption>Kunci L Set Biasa TEKIRO (Inchi) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BIASA TEKIRO (MM) PANJANG.png" alt="Kunci L Set Biasa TEKIRO (mm) Panjang " width="150" height="150">
+            <figcaption>Kunci L Set Biasa TEKIRO (mm) Panjang </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BIASA XP TOOL (MM).png" alt="Kunci L Set Biasa XP TOOL (mm)  " width="150" height="150">
+            <figcaption>Kunci L Set Biasa XP TOOL (mm)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BINTANG CAP MATA.png" alt="Kunci L Set Bintang Cap MATA   " width="150" height="150">
+            <figcaption>Kunci L Set Bintang Cap MATA   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BINTANG STAMVICK (MM).png" alt="Kunci L Set Bintang STAMVICK   " width="150" height="150">
+            <figcaption>Kunci L Set Bintang STAMVICK   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI L SET BINTANG TEKIRO.png" alt="Kunci L Set Bintang TEKIRO   " width="150" height="150">
+            <figcaption>Kunci L Set Bintang TEKIRO   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI OLI FILTER TEKIRO 6 INCHI RANTAI.png" alt="Kunci Oli Filter TEKIRO 6 Inchi Rantai   " width="150" height="150">
+            <figcaption>Kunci Oli Filter TEKIRO 6" Rantai   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI OLI FILTER TEKIRO 9 INCHI RANTAI.png" alt="Kunci Oli Filter TEKIRO 9 Inchi Rantai   " width="150" height="150">
+            <figcaption>Kunci Oli Filter TEKIRO 9" Rantai   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI OLI FILTER TEKIRO 9 INCHI SABUK.png" alt="Kunci Oli Filter TEKIRO 9 Inchi Sabuk   " width="150" height="150">
+            <figcaption>Kunci Oli Filter TEKIRO 9" Sabuk   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PAS SET DIAMOND.png" alt="Kunci Pas Set DIAMOND   " width="150" height="150">
+            <figcaption>Kunci Pas Set DIAMOND   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING PAS SET TEKIRO (KECIL).png" alt="Kunci Pas Set TEKIRO (Kecil)  " width="150" height="150">
+            <figcaption>Kunci Pas Set TEKIRO (Kecil)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PAS SET TEKIRO (BESAR).png" alt="Kunci Pas Set TEKIRO (Besar)   " width="150" height="150">
+            <figcaption>Kunci Pas Set TEKIRO (Besar)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PINTU.png" alt="Kunci Pintu   " width="150" height="150">
+            <figcaption>Kunci Pintu  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA IWT 14 INCHI.png" alt="Kunci Pipa IWT 14 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa IWT 14" (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA IWT 36 INCHI.png" alt="Kunci Pipa IWT 36 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa IWT 36" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA KDK 10 INCHI.png" alt="Kunci Pipa KDK 10 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa KDK 10" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA KDK 18 INCHI.png" alt="Kunci Pipa KDK 18 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa KDK 18" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA KDK 24 INCHI.png" alt="Kunci Pipa KDK 24 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa KDK 24" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA RANTAI 16 INCHI.png" alt="Kunci Pipa Rantai 16 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa Rantai 16"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI PIPA TEKIRO 18 INCHI.png" alt="Kunci Pipa TEKIRO 18 Inchi   " width="150" height="150">
+            <figcaption>Kunci Pipa TEKIRO 18" (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING PAS SET FUKUNG.png" alt="Kunci Ring Pas Set FUKUNG   " width="150" height="150">
+            <figcaption>Kunci Ring Pas Set FUKUNG  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING PAS SET TEKIRO (KECIL).png" alt="Kunci Ring Pas Set TEKIRO (Kecil)   " width="150" height="150">
+            <figcaption>Kunci Ring Pas Set TEKIRO (Kecil)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING PAS SET TEKIRO (BESAR).png" alt="Kunci Ring Pas Set TEKIRO (Besar)   " width="150" height="150">
+            <figcaption>Kunci Ring Pas Set TEKIRO (Besar)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING PAS TEKIRO.png" alt="Kunci Ring Pas TEKIRO   " width="150" height="150">
+            <figcaption>Kunci Ring Pas TEKIRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING SET FUKUNG.png" alt="Kunci Ring Set FUKUNG   " width="150" height="150">
+            <figcaption>Kunci Ring Set FUKUNG  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING SET MATSU.png" alt="Kunci Ring Set MATSU   " width="150" height="150">
+            <figcaption>Kunci Ring Set MATSU  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING SET TEKIRO (KECIL).png" alt="Kunci Ring Set TEKIRO (Kecil)   " width="150" height="150">
+            <figcaption>Kunci Ring Set TEKIRO (Kecil)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI RING SET TEKIRO (BESAR).png" alt="Kunci Ring Set TEKIRO (Besar)   " width="150" height="150">
+            <figcaption>Kunci Ring Set TEKIRO (Besar)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI SOCKET SET ATS.png" alt="Kunci Socket Set ATS   " width="150" height="150">
+            <figcaption>Kunci Socket Set ATS  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI SOCKET SET TEKIRO (KECIL).png" alt="Kunci Socket Set TEKIRO (Kecil)   " width="150" height="150">
+            <figcaption>Kunci Socket Set TEKIRO (Kecil)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI SOCKET SET TEKIRO (BESAR).png" alt="Kunci Socket Set TEKIRO (Besar)   " width="150" height="150">
+            <figcaption>Kunci Socket Set TEKIRO (Besar)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI T TEKIRO.png" alt="Kunci T TEKIRO   " width="150" height="150">
+            <figcaption>Kunci T TEKIRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/KUNCI Y TEKIRO.png" alt="Kunci Y TEKIRO   " width="150" height="150">
+            <figcaption>Kunci Y TEKIRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LAMPU TONGKAT PARKIR.png" alt="Lampu Tongkat Parkir   " width="150" height="150">
+            <figcaption>Lampu Tongkat Parkir  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LAP KANEBO RACING.png" alt="Lap Kanebo RACING   " width="150" height="150">
+            <figcaption>Lap Kanebo RACING  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LEM DEXTONE 5 MENIT.png" alt="Lem DEXTONE 5 Menit   " width="150" height="150">
+            <figcaption>Lem DEXTONE 5 Menit  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LEM SILICONE RED.png" alt="Lem SILICONE RED   " width="150" height="150">
+            <figcaption>Lem SILICONE RED  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LEM THREE BOND.png" alt="Lem THREE BOND   " width="150" height="150">
+            <figcaption>Lem THREE BOND  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LEVER BLOCK (LEVER HOIST).png" alt="Lever Block (Lever Hoist)   " width="150" height="150">
+            <figcaption>Lever Block (Lever Hoist)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LIFE JACKET ATUNAS.png" alt="Life Jacket ATUNAS   " width="150" height="150">
+            <figcaption>Life Jacket ATUNAS (Safety)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LIFE RING BOUY.png" alt="Life Ring Bouy   " width="150" height="150">
+            <figcaption>Life Ring Bouy (Safety) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/LITERAN 19 LTR.png" alt="Literan 19 Ltr   " width="150" height="150">
+            <figcaption>Literan 19 Ltr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MASKER HITAM.png" alt="Masker Hitam   " width="150" height="150">
+            <figcaption>Masker Hitam  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MASKER MASKR (KARBON AKTIF).png" alt="Masker MASKR (Karbon Aktif)   " width="150" height="150">
+            <figcaption>Masker MASKR (Karbon Aktif)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MASKER MASKR.png" alt="Masker MASKR   " width="150" height="150">
+            <figcaption>Masker MASKR  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MASKER MEDIS.png" alt="Masker Medis   " width="150" height="150">
+            <figcaption>Masker Medis  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MASKER MOTOR KBR.png" alt="Masker Motor KBR   " width="150" height="150">
+            <figcaption>Masker Motor KBR  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MASKER PLASTIK HIJAU.png" alt="Masker Plastik Hijau  " width="150" height="150">
+            <figcaption>Masker Plastik Hijau </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 1,5 MM.png" alt="Mata Bor Besi BOSCH 1,5 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 1,5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 2 MM.png" alt="Mata Bor Besi BOSCH 2 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 2 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 2,5 MM.png" alt="Mata Bor Besi BOSCH 2,5 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 2,5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 3 MM.png" alt="Mata Bor Besi BOSCH 3 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 3 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 3,5 MM.png" alt="Mata Bor Besi BOSCH 3,5 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 3,5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 4 MM.png" alt="Mata Bor Besi BOSCH 4 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 4 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 4,5 MM.png" alt="Mata Bor Besi BOSCH 4,5 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 4,5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 5 MM.png" alt="Mata Bor Besi BOSCH 5 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 6 MM.png" alt="Mata Bor Besi BOSCH 6 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 6 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 7 MM.png" alt="Mata Bor Besi BOSCH 7 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 7 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 8 MM.png" alt="Mata Bor Besi BOSCH 8 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 9 MM.png" alt="Mata Bor Besi BOSCH 9 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 9 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 10 MM.png" alt="Mata Bor Besi BOSCH 10 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI BOSCH 12 MM.png" alt="Mata Bor Besi BOSCH 12 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi BOSCH 12 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI NACHI 3 MM.png" alt="Mata Bor Besi NACHI 3 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi NACHI 3 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI NACHI 4 MM.png" alt="Mata Bor Besi NACHI 4 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi NACHI 4 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI NACHI 5 MM.png" alt="Mata Bor Besi NACHI 5 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi NACHI 5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI NACHI 6 MM.png" alt="Mata Bor Besi NACHI 6 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi NACHI 6 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI NACHI 8 MM.png" alt="Mata Bor Besi NACHI 8 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi NACHI 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI NACHI 12 MM.png" alt="Mata Bor Besi NACHI 12 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi NACHI 12 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI SET CASAL.png" alt="Mata Bor Besi Set CASAL  " width="150" height="150">
+            <figcaption>Mata Bor Besi Set CASAL </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI SET LINZ (KECIL).png" alt="Mata Bor Besi Set LINZ (Kecil)  " width="150" height="150">
+            <figcaption>Mata Bor Besi Set LINZ (Kecil) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI SET LINZ (BESAR).png" alt="Mata Bor Besi Set LINZ (Besar)  " width="150" height="150">
+            <figcaption>Mata Bor Besi Set LINZ (Besar) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI SET RRC.png" alt="Mata Bor Besi Set RRC  " width="150" height="150">
+            <figcaption>Mata Bor Besi Set RRC </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI SET TOSITA (KECIL).png" alt="Mata Bor Besi Set TOSITA (Kecil)  " width="150" height="150">
+            <figcaption>Mata Bor Besi Set TOSITA (Kecil) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI SET TOSITA (BESAR).png" alt="Mata Bor Besi Set TOSITA (Besar)  " width="150" height="150">
+            <figcaption>Mata Bor Besi Set TOSITA (Besar) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI VOREX 4 MM.png" alt="Mata Bor Besi VOREX 4 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi VOREX 4 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI VOREX 6 MM.png" alt="Mata Bor Besi VOREX 6 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi VOREX 6 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI VOREX 7 MM.png" alt="Mata Bor Besi VOREX 7 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi VOREX 7 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI VOREX 8 MM.png" alt="Mata Bor Besi VOREX 8 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi VOREX 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI VOREX 9 MM.png" alt="Mata Bor Besi VOREX 9 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi VOREX 9 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BESI VOREX 10 MM.png" alt="Mata Bor Besi VOREX 10 mm  " width="150" height="150">
+            <figcaption>Mata Bor Besi VOREX 10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BOSCH MULTIPURPOSE 4 MM.png" alt="Mata Bor BOSCH Multipurpose 4 mm  " width="150" height="150">
+            <figcaption>Mata Bor BOSCH Multipurpose 4 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BOSCH MULTIPURPOSE 5 MM.png" alt="Mata Bor BOSCH Multipurpose 5 mm  " width="150" height="150">
+            <figcaption>Mata Bor BOSCH Multipurpose 5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BOSCH MULTIPURPOSE 6 MM.png" alt="Mata Bor BOSCH Multipurpose 6 mm  " width="150" height="150">
+            <figcaption>Mata Bor BOSCH Multipurpose 6 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BOSCH MULTIPURPOSE 8 MM.png" alt="Mata Bor BOSCH Multipurpose 8 mm  " width="150" height="150">
+            <figcaption>Mata Bor BOSCH Multipurpose 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA BOR BOSCH MULTIPURPOSE 10 MM.png" alt="Mata Bor BOSCH Multipurpose 10 mm  " width="150" height="150">
+            <figcaption>Mata Bor BOSCH Multipurpose 10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA GERGAJI BESI.png" alt="Mata Gergaji Besi  " width="150" height="150">
+            <figcaption>Mata Gergaji Besi </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MATA GERGAJI MESIN ULTRA MAJOR 16 INCHI.png" alt="Mata Gergaji Mesin ULTRA MAJOR 16 Inchi  " width="150" height="150">
+            <figcaption>Mata Gergaji Mesin ULTRA MAJOR 16"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 2 AMP.png" alt="MCB SCHNEIDER 2 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 2 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 4 AMP.png" alt="MCB SCHNEIDER 4 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 4 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 6 AMP.png" alt="MCB SCHNEIDER 6 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 6 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 10 AMP.png" alt="MCB SCHNEIDER 10 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 10 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 16 AMP.png" alt="MCB SCHNEIDER 16 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 16 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 25 AMP.png" alt="MCB SCHNEIDER 25 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 25 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MCB SCHNEIDER 32 AMP.png" alt="MCB SCHNEIDER 32 AMP  " width="150" height="150">
+            <figcaption>MCB SCHNEIDER 32 AMP (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MECHANICAL SEAL TTO FOR KEW PUMP.png" alt="Mechanical Seal TTO For Kew Pump  " width="150" height="150">
+            <figcaption>Mechanical Seal TTO For Kew Pump  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MESH S-STEEL NO 4.png" alt="Mesh S/Steel No. 4  " width="150" height="150">
+            <figcaption>Mesh S/Steel No. 4  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MESIN AMPLAS ATS.png" alt="Mesin Amplas ATS  " width="150" height="150">
+            <figcaption>Mesin Amplas ATS  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MESIN CIRCULAR SAW MAKITA M 5801 B.png" alt="Mesin Circular Saw MAKITA M 5001 B  " width="150" height="150">
+            <figcaption>Mesin Circular Saw MAKITA M 5001 B  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MESIN POTONG RUMPUT IRINO.png" alt="Mesin Potong Rumput IRINO  " width="150" height="150">
+            <figcaption>Mesin Potong Rumput IRINO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MESIN POTONG RUMPUT KOROBE.png" alt="Mesin Potong Rumput KOROBE  " width="150" height="150">
+            <figcaption>Mesin Potong Rumput KOROBE  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MESIN SUGU MAKITA M 1902 B.png" alt="Mesin Sugu MAKITA M 1902 B  " width="150" height="150">
+            <figcaption>Mesin Sugu MAKITA M 1902 B  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN CASAL 3 MTR.png" alt="Meteran CASAL 3 mtr  " width="150" height="150">
+            <figcaption>Meteran CASAL 3 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN ATS 5 MTR.png" alt="Meteran ATS 5 mtr  " width="150" height="150">
+            <figcaption>Meteran ATS 5 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN ATS 7,5 MTR.png" alt="Meteran ATS 7,5 mtr  " width="150" height="150">
+            <figcaption>Meteran ATS 7,5 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN ATS 10 MTR.png" alt="Meteran ATS 10 mtr  " width="150" height="150">
+            <figcaption>Meteran ATS 10 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN ATS 100 MTR FIBRE.png" alt="Meteran ATS 100 mtr  " width="150" height="150">
+            <figcaption>Meteran ATS 100 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN TEKIRO 3 MTR.png" alt="Meteran TEKIRO 3 mtr  " width="150" height="150">
+            <figcaption>Meteran TEKIRO 3 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN TEKIRO 5 MTR.png" alt="Meteran TEKIRO 5 mtr  " width="150" height="150">
+            <figcaption>Meteran TEKIRO 5 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN TEKIRO 7,5 MM.png" alt="Meteran TEKIRO 7,5 mtr  " width="150" height="150">
+            <figcaption>Meteran TEKIRO 7,5 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN TEKIRO 10 MTR.png" alt="Meteran TEKIRO 10 mtr  " width="150" height="150">
+            <figcaption>Meteran TEKIRO 10 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN TOSITA 50 MTR FIBRE.png" alt="Meteran TOSITA 50 mtr  " width="150" height="150">
+            <figcaption>Meteran TOSITA 50 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN TOSITA 100 MTR FIBRE.png" alt="Meteran TOSITA 100 mtr  " width="150" height="150">
+            <figcaption>Meteran TOSITA 100 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN WELYANG 50 MTR FIBRE.png" alt="Meteran WELYANG 50 mtr  " width="150" height="150">
+            <figcaption>Meteran WELYANG 50 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/METERAN YUBAO 100 MTR FIBRE.png" alt="Meteran YUBAO 100 mtr  " width="150" height="150">
+            <figcaption>Meteran YUBAO 100 mtr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MINYAK REM PRESTONE @ 1 LTR.png" alt="Minyak Rem PRESTONE @ 1 ltr  " width="150" height="150">
+            <figcaption>Minyak Rem PRESTONE @ 1 ltr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MINYAK REM REDEX @ 1 LTR.png" alt="Minyak Rem REDEX @ 1 ltr  " width="150" height="150">
+            <figcaption>Minyak Rem REDEX @ 1 ltr  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/MINYAK REM WAGONER @ 300 ML.png" alt="Minyak Rem WAGONER @ 300 ml  " width="150" height="150">
+            <figcaption>Minyak Rem WAGONER @ 300 ml  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/NFB (MCCB) FUJI.png" alt="NFB (MCCB) FUJI  " width="150" height="150">
+            <figcaption>NFB (MCCB) FUJI (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/NOZZLE FLOWMETER BENGAS (KECIL).png" alt="Nozzle Flowmeter BENGAS (Kecil)  " width="150" height="150">
+            <figcaption>Nozzle Flowmeter BENGAS (Kecil)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/NOZZLE FLOWMETER BENGAS (BESAR).png" alt="Nozzle Flowmeter BENGAS (Besar)  " width="150" height="150">
+            <figcaption>Nozzle Flowmeter BENGAS (Besar)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/NOZZLE PEMADAM 2 INCHI + VARIABLE.png" alt="Nozzle Pemadam 2 Inchi + Variable  " width="150" height="150">
+            <figcaption>Nozzle Pemadam 2" + Variable  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/NOZZLE PEMADAM 2,5 INCHI + VARIABLE.png" alt="Nozzle Pemadam 2,5 Inchi + Variable  " width="150" height="150">
+            <figcaption>Nozzle Pemadam 2,5" + Variable  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG ATS 4 INCHI (-) GAGANG KARET.png" alt="Obeng ATS 4 Inchi (-)  " width="150" height="150">
+            <figcaption>Obeng ATS 4" (-)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG BESTGUARD 8 INCHI (-).png" alt="Obeng ATS 4 Inchi (-)  " width="150" height="150">
+            <figcaption>Obeng ATS 4" (-)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG BOLAK BALIK T.png" alt="Obeng Bolak Balik T  " width="150" height="150">
+            <figcaption>Obeng Bolak Balik T  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG BOLAK BALIK TEKIRO.png" alt="Obeng Bolak Balik TEKIRO  " width="150" height="150">
+            <figcaption>Obeng Bolak Balik TEKIRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG GRIP ON 6  INCHI (-) KETOK.png" alt="Obeng GRIP ON 6 Inchi (-)  " width="150" height="150">
+            <figcaption>Obeng GRIP ON 6" (-)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG JAM WIPRO.png" alt="Obeng Jam WIPRO  " width="150" height="150">
+            <figcaption>Obeng Jam WIPRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG KETOK SET ATS.png" alt="Obeng Ketok Set ATS  " width="150" height="150">
+            <figcaption>Obeng Ketok Set ATS  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG KETOK SET TEKIRO.png" alt="Obeng Ketok Set TEKIRO  " width="150" height="150">
+            <figcaption>Obeng Ketok Set TEKIRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG POPEYE 4 INCHI (-) GAGANG KARET.png" alt="Obeng POPEYE 4 Inchi (-) Gagang Karet " width="150" height="150">
+            <figcaption>Obeng POPEYE 4" (-) Gagang Karet </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG POPEYE 6 INCHI (-) GAGANG KARET.png" alt="Obeng POPEYE 6 Inchi (-) Gagang Karet " width="150" height="150">
+            <figcaption>Obeng POPEYE 6" (-) Gagang Karet </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG POPEYE 8 INCHI (+) GAGANG KARET.png" alt="Obeng POPEYE 8 Inchi (+) Gagang Karet " width="150" height="150">
+            <figcaption>Obeng POPEYE 8" (+) Gagang Karet </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG POPEYE 8 INCHI (-) GAGANG KARET.png" alt="Obeng POPEYE 8 Inchi (-) Gagang Karet " width="150" height="150">
+            <figcaption>Obeng POPEYE 8" (-) Gagang Karet </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG POPEYE 10 INCHI (+) GAGANG KARET.png" alt="Obeng POPEYE 10 Inchi (+) Gagang Karet " width="150" height="150">
+            <figcaption>Obeng POPEYE 10" (+) Gagang Karet </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG SET TEKIRO.png" alt="Obeng Set TEKIRO " width="150" height="150">
+            <figcaption>Obeng Set TEKIRO </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG SET VITA TOOL.png" alt="Obeng Set VITA TOOL " width="150" height="150">
+            <figcaption>Obeng Set VITA TOOL </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG TESTPEN CAMEL.png" alt="Obeng Testpen CAMEL " width="150" height="150">
+            <figcaption>Obeng Testpen CAMEL (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG TESTPEN TOYOSAKI.png" alt="Obeng Testpen TOYOSAKI " width="150" height="150">
+            <figcaption>Obeng Testpen TOYOSAKI (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG TLT.png" alt="Obeng TLT " width="150" height="150">
+            <figcaption>Obeng TLT </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OBENG TORA 8 IN 1.png" alt="Obeng TORA 8 in 1 " width="150" height="150">
+            <figcaption>Obeng TORA 8 in 1 </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 35 - 50 - 8 MM.png" alt="Oil Seal 35 - 50 - 8 mm " width="150" height="150">
+            <figcaption>Oil Seal 35 - 50 - 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 40 - 62 - 7 MM.png" alt="Oil Seal 40 - 62 - 7 mm " width="150" height="150">
+            <figcaption>Oil Seal 40 - 62 - 7 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 45 - 65 - 10 MM.png" alt="Oil Seal 45 - 65 - 10 mm " width="150" height="150">
+            <figcaption>Oil Seal 45 - 65 - 10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 45 - 68 - 12 MM.png" alt="Oil Seal 45 - 68 - 12 mm " width="150" height="150">
+            <figcaption>Oil Seal 45 - 68 - 12 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 45 - 72 - 8 MM.png" alt="Oil Seal 45 - 72 - 8 mm " width="150" height="150">
+            <figcaption>Oil Seal 45 - 72 - 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 50 - 72 - 8 MM.png" alt="Oil Seal 50 - 72 - 8 mm " width="150" height="150">
+            <figcaption>Oil Seal 50 - 72 - 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 55 - 72 - 9 MM.png" alt="Oil Seal 55 - 72 - 9 mm " width="150" height="150">
+            <figcaption>Oil Seal 55 - 72 - 9 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 60 - 80 - 10 MM.png" alt="Oil Seal 60 - 80 -10 mm " width="150" height="150">
+            <figcaption>Oil Seal 60 - 80 -10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 65 - 85 - 10 MM.png" alt="Oil Seal 65 - 85 - 10 mm " width="150" height="150">
+            <figcaption>Oil Seal 65 - 85 - 10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 70 - 85 - 8 MM.png" alt="Oil Seal 70 - 85 - 8 mm " width="150" height="150">
+            <figcaption>Oil Seal 70 - 85 - 8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 70 - 95 - 13 MM.png" alt="Oil Seal 70 - 95 - 13 mm " width="150" height="150">
+            <figcaption>Oil Seal 70 - 95 - 13 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 70 - 100 - 10 MM.png" alt="Oil Seal 70 - 100 - 10 mm " width="150" height="150">
+            <figcaption>Oil Seal 70 - 100 - 10 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 75 - 100 - 13 MM.png" alt="Oil Seal 70 - 100 - 13 mm " width="150" height="150">
+            <figcaption>Oil Seal 75 - 100 - 13 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 95 - 120 - 13 MM.png" alt="Oil Seal 95 - 120 - 13 mm " width="150" height="150">
+            <figcaption>Oil Seal 95 - 120 - 13 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 100 - 120 - 13 MM.png" alt="Oil Seal 100 - 120 - 13 mm " width="150" height="150">
+            <figcaption>Oil Seal 100 - 120 - 13 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 110 - 140 - 12 MM.png" alt="Oil Seal 110 - 140 - 12 mm " width="150" height="150">
+            <figcaption>Oil Seal 110 - 140 - 12 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 117 - 142 - 14 MM.png" alt="Oil Seal 117 - 142 - 14 mm " width="150" height="150">
+            <figcaption>Oil Seal 117 - 142 - 14 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OIL SEAL 125 - 155 - 14 MM.png" alt="Oil Seal 125 - 155 - 14 mm " width="150" height="150">
+            <figcaption>Oil Seal 125 - 155 - 14 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OLI CAN SELLERY.png" alt="Oli Can SELLERY " width="150" height="150">
+            <figcaption>Oli Can SELLERY </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OLI MESRAN 2 T @ 1 LTR.png" alt="Oli MESRAN 2 T @ 1 ltr " width="150" height="150">
+            <figcaption>Oli MESRAN 2 T @ 1 ltr </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OLI MESRAN 20 - 50 @ 1 LTR.png" alt="Oli MESRAN 20 - 50 @ 1 ltr " width="150" height="150">
+            <figcaption>Oli MESRAN 20 - 50 @ 1 ltr </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OLI TOP ONE DIESEL @ 1 LTR.png" alt="Oli TOP ONE Diesel @ 1 ltr " width="150" height="150">
+            <figcaption>Oli TOP ONE Diesel @ 1 ltr </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OLI WD 40 @ 333 ML.png" alt="Oli WD 40 @ 333 ml " width="150" height="150">
+            <figcaption>Oli WD 40 @ 333 ml </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/OLI WD 40 @ 412 ML.png" alt="Oli WD 40 @ 412 ml " width="150" height="150">
+            <figcaption>Oli WD 40 @ 412 ml </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ORING CORD.png" alt="Oring Cord " width="150" height="150">
+            <figcaption>Oring Cord </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ORING KIT BOX.png" alt="Oring Kit Box " width="150" height="150">
+            <figcaption>Oring Kit Box </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KARET.png" alt="Packing Karet " width="150" height="150">
+            <figcaption>Packing Karet </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KERTAS TBA 0,5 MM.png" alt="Packing Kertas TBA 0,5 mm " width="150" height="150">
+            <figcaption>Packing Kertas TBA 0,5 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KERTAS TBA 0,8 MM.png" alt="Packing Kertas TBA 0,8 mm " width="150" height="150">
+            <figcaption>Packing Kertas TBA 0,8 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KERTAS TBA 1 MM.png" alt="Packing Kertas TBA 1 mm " width="150" height="150">
+            <figcaption>Packing Kertas TBA 1 mm </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KLINGERITE 1000 ASLI.png" alt="Packing Klingerite 1000 Asli " width="150" height="150">
+            <figcaption>Packing Klingerite 1000 Asli </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KLINGERITE 1000.png" alt="Packing Klingerite 1000  " width="150" height="150">
+            <figcaption>Packing Klingerite 1000  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KLINGERITE TOMBO 1,5 MM HITAM.png" alt="Packing Klingerite TOMBO 1,5 mm Hitam " width="150" height="150">
+            <figcaption>Packing Klingerite TOMBO 1,5 mm Hitam  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING KLINGERITE TOMBO MERAH.png" alt="Packing Klingerite TOMBO Merah " width="150" height="150">
+            <figcaption>Packing Klingerite TOMBO Merah  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PACKING TALI PUTIH @ 5 KG.png" alt="Packing Tali Putih @ 5 kg " width="150" height="150">
+            <figcaption>Packing Tali Putih @ 5 kg  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PAHAT BESI JUMBO.png" alt="Pahat Besi JUMBO " width="150" height="150">
+            <figcaption>Pahat Besi JUMBO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PAHAT KAYU ATS.png" alt="Pahat Kayu ATS " width="150" height="150">
+            <figcaption>Pahat Kayu ATS  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU BODEM TOSITA.png" alt="Palu Bodem TOSITA " width="150" height="150">
+            <figcaption>Palu Bodem TOSITA  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU CHIPPING (KETOK KARAT).png" alt="Palu Chipping " width="150" height="150">
+            <figcaption>Palu Chipping  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KARET.png" alt="Palu Karet " width="150" height="150">
+            <figcaption>Palu Karet  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KONDE BLITZ 1 LB.png" alt="Palu Konde BLITZ 1 LB " width="150" height="150">
+            <figcaption>Palu Konde BLITZ 1 LB  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KONDE BLITZ 1,5 LB.png" alt="Palu Konde BLITZ 1,5 LB " width="150" height="150">
+            <figcaption>Palu Konde BLITZ 1,5 LB  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KONDE CAMEL & CAP MATA (KECIL).png" alt="Palu Konde CAMEL & Cap MATA " width="150" height="150">
+            <figcaption>Palu Konde CAMEL & Cap MATA  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KONDE CAMEL 2 LB.png" alt="Palu Konde CAMEL 2 LB " width="150" height="150">
+            <figcaption>Palu Konde CAMEL 2 LB  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KUKU KAMBING REWIN.png" alt="Palu Kuku Kambing REWIN " width="150" height="150">
+            <figcaption>Palu Kuku Kambing REWIN  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KUKU KAMBING TEKIRO.png" alt="Palu Kuku Kambing TEKIRO " width="150" height="150">
+            <figcaption>Palu Kuku Kambing TEKIRO  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PALU KUKU KAMBING TORA 8 OZ.png" alt="Palu Kuku Kambing TORA 8 OZ " width="150" height="150">
+            <figcaption>Palu Kuku Kambing TORA 8 OZ  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PENGGARIS BESI 100 CM.png" alt="Penggaris Besi 100 cm " width="150" height="150">
+            <figcaption>Penggaris Besi 100 cm  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PIPA LISTRIK CHAMPION.png" alt="Pipa Listrik CHAMPION " width="150" height="150">
+            <figcaption>Pipa Listrik CHAMPION (Elektrik) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PIPA RUCIKA AW.png" alt="Pipa RUCIKA AW " width="150" height="150">
+            <figcaption>Pipa RUCIKA AW (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PIRING ALLUMINIUM.png" alt="Piring Alluminium " width="150" height="150">
+            <figcaption>Piring Alluminium  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU CUTTER.png" alt="Pisau Cutter " width="150" height="150">
+            <figcaption>Pisau Cutter  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU DEMPUL 2 INCHI.png" alt="Pisau Dempul 2 Inchi " width="150" height="150">
+            <figcaption>Pisau Dempul 2"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU DEMPUL 4 INCHI.png" alt="Pisau Dempul 4 Inchi " width="150" height="150">
+            <figcaption>Pisau Dempul 4"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU DEMPUL VPR 2,5 INCHI.png" alt="Pisau Dempul VPR 2,5 Inchi " width="150" height="150">
+            <figcaption>Pisau Dempul VPR 2,5"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU DEMPUL VPR 3 INCHI.png" alt="Pisau Dempul VPR 3 Inchi " width="150" height="150">
+            <figcaption>Pisau Dempul VPR 3"  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU RUMPUT ATS.png" alt="Pisau Rumput ATS  " width="150" height="150">
+            <figcaption>Pisau Rumput ATS  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU RUMPUT TANAKA.png" alt="Pisau Rumput TANAKA  " width="150" height="150">
+            <figcaption>Pisau Rumput TANAKA  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU RUMPUT TOSITA PANJANG.png" alt="Pisau Rumput TOSITA Panjang  " width="150" height="150">
+            <figcaption>Pisau Rumput TOSITA Panjang  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU RUMPUT XENON.png" alt="Pisau Rumput XENON  " width="150" height="150">
+            <figcaption>Pisau Rumput XENON  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PISAU RUMPUT YAMAMAX PANJANG.png" alt="Pisau Rumput YAMAMAX Panjang  " width="150" height="150">
+            <figcaption>Pisau Rumput YAMAMAX Panjang  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POLICE LINE (BARRICADE LINE).png" alt="Police Line (Barricade Line)  " width="150" height="150">
+            <figcaption>Police Line (Barricade Line) (Safety)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR KOROBE WR 20 X.png" alt="Pompa Air KOROBE WR 20 X  " width="150" height="150">
+            <figcaption>Pompa Air KOROBE WR 20 X (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR KOROBE WR 30 X.png" alt="Pompa Air KOROBE WR 30 X  " width="150" height="150">
+            <figcaption>Pompa Air KOROBE WR 30 X (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR MULTIPRO JET 100 A.png" alt="Pompa Air MULTIPRO JET 100 A  " width="150" height="150">
+            <figcaption>Pompa Air MULTIPRO JET 100 A (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR PANASONIC 200 W NON OTOMAT.png" alt="Pompa Air PANASONIC 200 W Non Otomat  " width="150" height="150">
+            <figcaption>Pompa Air PANASONIC 200 W Non Otomat (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR PANASONIC 200 W OTOMAT.png" alt="Pompa Air PANASONIC 200 W Otomat  " width="150" height="150">
+            <figcaption>Pompa Air PANASONIC 200 W Otomat (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR PEDROLLO JSWm 1 DX.png" alt="Pompa Air PEDROLLO JSWm 1 DX  " width="150" height="150">
+            <figcaption>Pompa Air PEDROLLO JSWm 1 DX (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR POEDROLLO JSWm 1 CX.png" alt="Pompa Air PEDROLLO JSWm 1 CX  " width="150" height="150">
+            <figcaption>Pompa Air PEDROLLO JSWm 1 CX (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR SHIMIZU PS 135 E.png" alt="Pompa Air SHIMIZU PS 135 E  " width="150" height="150">
+            <figcaption>Pompa Air SHIMIZU PS 135 E (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR SHIMIZU PS 226 BIT.png" alt="Pompa Air SHIMIZU PS 226 BIT  " width="150" height="150">
+            <figcaption>Pompa Air SHIMIZU PS 226 BIT (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR SHIMIZU PS 230.png" alt="Pompa Air SHIMIZU PS 230  " width="150" height="150">
+            <figcaption>Pompa Air SHIMIZU PS 230 (Sanitary) </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR SHIMIZU.png" alt="Pompa Air SHIMIZU   " width="150" height="150">
+            <figcaption>Pompa Air SHIMIZU (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA AIR TSURUMI TES - 50 R (2 INCHI).png" alt="Pompa Air TSURUMI TES - 50 R   " width="150" height="150">
+            <figcaption>Pompa Air TSURUMI TES - 50 R (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA GEMUK AMERICAN TOOL.png" alt="Pompa Gemuk AMERICAN TOOL   " width="150" height="150">
+            <figcaption>Pompa Gemuk AMERICAN TOOL   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA GEMUK TEKIRO.png" alt="Pompa Gemuk TEKIRO   " width="150" height="150">
+            <figcaption>Pompa Gemuk TEKIRO   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA OLI ASANO PLASTIK.png" alt="Pompa Oli ASANO Plastik   " width="150" height="150">
+            <figcaption>Pompa Oli ASANO Plastik   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA OLI BENGAS S-STEEL (RACUN).png" alt="Pompa Oli BENGAS S/Steel (Racun)   " width="150" height="150">
+            <figcaption>Pompa Oli BENGAS S/Steel (Racun)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA OLI ROHA.png" alt="Pompa Oli ROHA   " width="150" height="150">
+            <figcaption>Pompa Oli ROHA   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA SEPEDA + AMPERE.png" alt="Pompa Sepeda + Ampere   " width="150" height="150">
+            <figcaption>Pompa Sepeda + Ampere   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA SOLAR BENGAS.png" alt="Pompa Solar BENGAS   " width="150" height="150">
+            <figcaption>Pompa Solar BENGAS   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/POMPA SOLO INDONESIA.png" alt="Pompa Solo Indonesia   " width="150" height="150">
+            <figcaption>Pompa Solo Indonesia   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/PRESS CONNECTOR.png" alt="Press Connector   " width="150" height="150">
+            <figcaption>Press Connector (Elektrik)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RADAR PELAMPUNG AIR.png" alt="RADAR Pelampung Air   " width="150" height="150">
+            <figcaption>RADAR Pelampung Air (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RADIATOR COOLANT MASTER GREEN @ 4,5 LTR.png" alt="Radiator Coolant MASTER Green @ 4,5 ltr   " width="150" height="150">
+            <figcaption>Radiator Coolant MASTER Green @ 4,5 ltr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RADIATOR COOLANT TOP ONE @ 4 LTR.png" alt="Radiator Coolant TOP ONE @ 4 ltr   " width="150" height="150">
+            <figcaption>Radiator Coolant TOP ONE @ 4 ltr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RADIATOR COOLANT XTRA KOOL @ 5 LTR.png" alt="Radiator Coolant XTRA KOOL @ 5 ltr   " width="150" height="150">
+            <figcaption>Radiator Coolant XTRA KOOL @ 5 ltr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RAGUM ATS.png" alt="Ragum ATS   " width="150" height="150">
+            <figcaption>Ragum ATS   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RAMES PACKING HITAM.png" alt="Rames Packing Hitam   " width="150" height="150">
+            <figcaption>Rames Packing Hitam   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RATCHET HANDLE TEKIRO.png" alt="Ratchet Handle TEKIRO   " width="150" height="150">
+            <figcaption>Ratchet Handle TEKIRO   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REFILL MASKER BLUE EAGLE PF 2.png" alt="Refill Masker BLUE EAGLE PF 2   " width="150" height="150">
+            <figcaption>Refill Masker BLUE EAGLE PF 2 (Safety)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR ARGON MORRIS 101 - 25 FL AR.png" alt="Regulator Argon MORRIS 101 - 25 FL AR   " width="150" height="150">
+            <figcaption>Regulator Argon MORRIS 101 - 25 FL AR   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG ALISON CW AMPERE + HOSE.png" alt="Regulator LPG ALISON c/w Ampere + Hose   " width="150" height="150">
+            <figcaption>Regulator LPG ALISON c/w Ampere + Hose   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG KOSANGAS TYPE 182.png" alt="Regulator LPG KOSANGAS type 182   " width="150" height="150">
+            <figcaption>Regulator LPG KOSANGAS type 182   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG MIYAKO.png" alt="Regulator LPG MIYAKO   " width="150" height="150">
+            <figcaption>Regulator LPG MIYAKO   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG NANKAI CW AMPERE.png" alt="Regulator LPG NANKAI c/w Ampere   " width="150" height="150">
+            <figcaption>Regulator LPG NANKAI c/w Ampere   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG QUANTUM CW AMPERE + HOSE.png" alt="Regulator LPG QUANTUM c/w Ampere + Hose   " width="150" height="150">
+            <figcaption>Regulator LPG QUANTUM c/w Ampere + Hose   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG WINN GAS CW AMPERE.png" alt="Regulator LPG WINN GAS c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator LPG WINN GAS c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG WINN GAS W - 900 CW AMPERE.png" alt="Regulator LPG WINN GAS W - 900 c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator LPG WINN GAS W - 900 c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG WINN GAS W 191 M.png" alt="Regulator LPG WINN GAS W 191 M c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator LPG WINN GAS W 191 M c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR LPG YAMATO CW AMPERE.png" alt="Regulator LPG YAMATO c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator LPG YAMATO c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR OXYGEN CHIYODA CW AMPERE.png" alt="Regulator Oxygen CHIYODA c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator Oxygen CHIYODA c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR OXYGEN MORRIS 201 - 7 M CW AMPERE.png" alt="Regulator Oxygen MORRIS 201 - 7 M c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator Oxygen MORRIS 201 - 7 M c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/REGULATOR OXYGEN YAMATO CW AMPERE.png" alt="Regulator Oxygen YAMATO c/w Ampere    " width="150" height="150">
+            <figcaption>Regulator Oxygen YAMATO c/w Ampere    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RESPIRATOR BLUE EAGLE NP 305 (SINGLE).png" alt="Respirator BLUE EAGLE NP 305 (Single)    " width="150" height="150">
+            <figcaption>Respirator BLUE EAGLE NP 305 (Single)    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RESPIRATOR BLUE EAGLE NP 306 (DOUBLE).png" alt="Respirator BLUE EAGLE NP 306 (Double)    " width="150" height="150">
+            <figcaption>Respirator BLUE EAGLE NP 306 (Double)    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RESPIRATOR RQ 1000.png" alt="Respirator RQ 1000    " width="150" height="150">
+            <figcaption>Respirator RQ 1000    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ROMPI JARING HALUS GOSAVE POLYESTER.png" alt="Rompi Jaring Halus GOSAVE Polyester    " width="150" height="150">
+            <figcaption>Rompi Jaring Halus GOSAVE Polyester (Safety)    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ROMPI JARING KASAR VPRO.png" alt="Rompi Jaring Kasar VPRO    " width="150" height="150">
+            <figcaption>Rompi Jaring Kasar VPRO (Safety)    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ROMPI NANKAI POLYESTER.png" alt="Rompi NANKAI Polyester    " width="150" height="150">
+            <figcaption>Rompi NANKAI Polyester (Safety)     </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/ROSKAM BESI ATS.png" alt="Roskam Besi ATS    " width="150" height="150">
+            <figcaption>Roskam Besi ATS (Pertukangan)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RUMAH SAKLAR PANASONIC 1 LOBANG.png" alt="Rumah Saklar PANASONIC 1 Lobang     " width="150" height="150">
+            <figcaption>Rumah Saklar PANASONIC 1 Lobang (Elektrik)    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/RUMAH SAKLAR PANASONIC 3 LOBANG.png" alt="Rumah Saklar PANASONIC 3 Lobang     " width="150" height="150">
+            <figcaption>Rumah Saklar PANASONIC 3 Lobang (Elektrik)    </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAFETY BELT EXCELLENT SINGLE HOOK BESAR.png" alt="Safety Belt EXCELLENT Single Hook Besar    " width="150" height="150">
+            <figcaption>Safety Belt EXCELLENT Single Hook Besar (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAFETY BELT HIDAKU.png" alt="Safety Belt HIDAKU    " width="150" height="150">
+            <figcaption>Safety Belt HIDAKU (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAFETY BELT MORRIS DOUBLE HOOK BESAR.png" alt="Safety Belt MORRIS Double Hook Besar    " width="150" height="150">
+            <figcaption>Safety Belt MORRIS Double Hook Besar (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR + STOP KONTAK BROCO INBOW.png" alt="Saklar + Stop Kontak BROCO Inbow    " width="150" height="150">
+            <figcaption>Saklar + Stop Kontak BROCO Inbow (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR + STOP KONTAK BROCO OUTBOW.png" alt="Saklar + Stop Kontak BROCO Outbow    " width="150" height="150">
+            <figcaption>Saklar + Stop Kontak BROCO Outbow (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR PANASONIC WNJ 5001 - 701.png" alt="Saklar PANASONIC WNJ 5001 - 701    " width="150" height="150">
+            <figcaption>Saklar PANASONIC WNJ 5001 - 701 (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR SERI BROCO INBOW DOUBLE.png" alt="Saklar Seri BROCO Inbow Double    " width="150" height="150">
+            <figcaption>Saklar Seri BROCO Inbow Double (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR SERI BROCO INBOW SINGLE.png" alt="Saklar Seri BROCO Inbow Single    " width="150" height="150">
+            <figcaption>Saklar Seri BROCO Inbow Single (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR SERI BROCO OUTBOW DOUBLE.png" alt="Saklar Seri BROCO Outbow Double    " width="150" height="150">
+            <figcaption>Saklar Seri BROCO Outbow Double (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SAKLAR SERI BROCO OUTBOW SINGLE.png" alt="Saklar Seri BROCO Outbow Single    " width="150" height="150">
+            <figcaption>Saklar Seri BROCO Outbow Single (Elektrik)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KAIN BINTIK HITAM.png" alt="Sarung Tangan Kain Bintik Hitam    " width="150" height="150">
+            <figcaption>Sarung Tangan Kain Bintik Hitam (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KARET ANSELL.png" alt="Sarung Tangan Karet ANSELL    " width="150" height="150">
+            <figcaption>Sarung Tangan Karet ANSELL (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KARET KEN MASTER.png" alt="Sarung Tangan Karet KEN MASTER    " width="150" height="150">
+            <figcaption>Sarung Tangan Karet KEN MASTER (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KARET PVC MERAH.png" alt="Sarung Tangan Karet PVC Merah    " width="150" height="150">
+            <figcaption>Sarung Tangan Karet PVC Merah (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT BIRU 14 INCHI.png" alt="Sarung Tangan Kulit Biru 14 Inchi    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit Biru 14" (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT BIRU 16 INCHI.png" alt="Sarung Tangan Kulit Biru 16 Inchi    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit Biru 16" (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT GOSAVE ECOGRIP.png" alt="Sarung Tangan Kulit GOSAVE Ecogrip    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit GOSAVE Ecogrip (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT JEANS PRO.png" alt="Sarung Tangan Kulit Jeans Pro    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit Jeans Pro (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT MAX BLUE.png" alt="Sarung Tangan Kulit MAX BLUE    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit MAX BLUE (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT MERAH LIS HITAM.png" alt="Sarung Tangan Kulit Merah Lis Hitam    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit Merah Lis Hitam (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT PROTECTOR KUNING.png" alt="Sarung Tangan Kulit PROTECTOR Kuning    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit PROTECTOR Kuning (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT SKW BIRU 16 INCHI.png" alt="Sarung Tangan Kulit SKW 16 Inchi    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit SKW 16" (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SARUNG TANGAN KULIT YAMOTO.png" alt="Sarung Tangan Kulit YAMOTO    " width="150" height="150">
+            <figcaption>Sarung Tangan Kulit YAMOTO (Safety)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEAL TAPE BESAR.png" alt="Seal Tape Besar    " width="150" height="150">
+            <figcaption>Seal Tape Besar   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEAL TAPE KECIL.png" alt="Seal Tape Kecil    " width="150" height="150">
+            <figcaption>Seal Tape Kecil   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEKOP LANCIP CARMEN.png" alt="Sekop Lancip CARMEN    " width="150" height="150">
+            <figcaption>Sekop Lancip CARMEN (Pertukangan)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEKOP SEGI CAP MATA.png" alt="Sekop Segi Cap MATA    " width="150" height="150">
+            <figcaption>Sekop Segi Cap MATA (Pertukangan)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEKOP SEGI CARMEN.png" alt="Sekop Segi CARMEN    " width="150" height="150">
+            <figcaption>Sekop Segi CARMEN (Pertukangan)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEKOP SEGI CROCODILE (BUAYA).png" alt="Sekop Segi CROCODILE    " width="150" height="150">
+            <figcaption>Sekop Segi CROCODILE (Pertukangan)   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG BENANG SAN - SAN.png" alt="Selang Benang SAN - SAN    " width="150" height="150">
+            <figcaption>Selang Benang SAN - SAN (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG BENING KECIL.png" alt="Selang Bening Kecil    " width="150" height="150">
+            <figcaption>Selang Bening Kecil (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG COBRA MAS ELASTIS.png" alt="Selang COBRA MAS Elastis    " width="150" height="150">
+            <figcaption>Selang COBRA MAS Elastis (Sanitary)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG FLOWMETER 1 INCHI BENGAS CW FITTING.png" alt="Selang Flowmeter 1 Inchi BENGAS c/w Fitting    " width="150" height="150">
+            <figcaption>Selang Flowmeter 1" BENGAS c/w Fitting   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG KOMPOR GAS NCR MERAH.png" alt="Selang Kompor Gas NCR Merah    " width="150" height="150">
+            <figcaption>Selang Kompor Gas NCR Merah   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG KOMPRESOR BRIDGESTONE.png" alt="Selang Kompresor BRIDGESTONE    " width="150" height="150">
+            <figcaption>Selang Kompresor BRIDGESTONE   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG KOMPRESOR KOKON @ 10 MTR.png" alt="Selang Kompresor KOKON @ 10 mtr    " width="150" height="150">
+            <figcaption>Selang Kompresor KOKON @ 10 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG KOMPRESOR KOKON @ 100 MTR.png" alt="Selang Kompresor KOKON @ 100 mtr    " width="150" height="150">
+            <figcaption>Selang Kompresor KOKON @ 100 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG KOMPRESOR PUSO @ 100 MTR.png" alt="Selang Kompresor PUSO @ 100 mtr    " width="150" height="150">
+            <figcaption>Selang Kompresor PUSO @ 100 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG LAS DOUBLE METAGOMA @ 100 MTR.png" alt="Selang Las Double METAGOMA @ 100 mtr    " width="150" height="150">
+            <figcaption>Selang Las Double METAGOMA @ 100 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG LAS DOUBLE NCR @ 100 MTR.png" alt="Selang Las Double NCR @ 100 mtr    " width="150" height="150">
+            <figcaption>Selang Las Double NCR @ 100 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG LAS DOUBLE NLG @ 100 MTR.png" alt="Selang Las Double NLG @ 100 mtr    " width="150" height="150">
+            <figcaption>Selang Las Double NLG @ 100 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG PEMADAM ROHA 2,5 INCHI X 30 MTR.png" alt="Selang Pemadam ROHA 2,5 Inchi x 30 mtr    " width="150" height="150">
+            <figcaption>Selang Pemadam ROHA 2,5" x 30 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG PEMADAM TYRONE 2 INCHI X 30 MTR.png" alt="Selang Pemadam TYRONE 2 Inchi x 30 mtr    " width="150" height="150">
+            <figcaption>Selang Pemadam TYRONE 2" x 30 mtr   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG POLYURETHANE.png" alt="Selang Polyurethane   " width="150" height="150">
+            <figcaption>Selang Polyurethane   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SELANG POMPA GEMUK.png" alt="Selang Pompa Gemuk   " width="150" height="150">
+            <figcaption>Selang Pompa Gemuk   </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SENDOK SEMEN ATS 6 INCHI BULAT GAGANG KARET.png" alt="Sendok Semen ATS 6 Inchi Gagang Karet   " width="150" height="150">
+            <figcaption>Sendok Semen ATS 6" Gagang Karet (Pertukangan)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SENDOK SEMEN ATS 6 INCHI BULAT.png" alt="Sendok Semen ATS 6 Inchi Bulat   " width="150" height="150">
+            <figcaption>Sendok Semen ATS 6" Bulat (Pertukangan)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SENDOK SEMEN ATS 7 INCHI LANCIP.png" alt="Sendok Semen ATS 7 Inchi Lancip   " width="150" height="150">
+            <figcaption>Sendok Semen ATS 7" Lancip (Pertukangan)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SENTER CAS LUBY L - 2673.png" alt="Senter Cas LUBY L - 2673   " width="150" height="150">
+            <figcaption>Senter Cas LUBY L - 2673 (Elektrik)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SENTER KEPALA CAS LUBY 30 W 2835 L.png" alt="Senter Kepala Cas LUBY 30 W 2835   " width="150" height="150">
+            <figcaption>Senter Kepala Cas LUBY 30 W 2835 (Elektrik)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SENTER KEPALA CAS MITSUYAMA MS 171 P.png" alt="Senter Kepala Cas MITSUYAMA MS 171 P   " width="150" height="150">
+            <figcaption>Senter Kepala Cas MITSUYAMA MS 171 P (Elektrik)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEPATU BOOT ALPINA TYPE 9506.png" alt="Sepatu Boot ALPINA Type 9506   " width="150" height="150">
+            <figcaption>Sepatu Boot ALPINA Type 9506 (Safety)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEPATU BOOT ANDO.png" alt="Sepatu Boot ANDO   " width="150" height="150">
+            <figcaption>Sepatu Boot ANDO (Safety)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEPATU BOOT KASOGI.png" alt="Sepatu Boot KASOGI   " width="150" height="150">
+            <figcaption>Sepatu Boot KASOGI (Safety)  </figcaption>
+        </figure>
+
+        <figure>
+            <img src="FOTO PRODUK/SEPATU BOOT SAINT HIJAU.png" alt="Sepatu Boot SAINT Hijau   " width="150" height="150">
+            <figcaption>Sepatu Boot SAINT Hijau (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU BOOT TOYOBO PANJANG WARNA.png" alt="Sepatu Boot TOYOBO Panjang Warna   " width="150" height="150">
+            <figcaption>Sepatu Boot TOYOBO Panjang Warna (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU BOOT TOYOBO PENDEK HIJAU.png" alt="Sepatu Boot TOYOBO Pendek Hijau   " width="150" height="150">
+            <figcaption>Sepatu Boot TOYOBO Pendek Hijau (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY BOOT PETROVA.png" alt="Sepatu Safety Boot PETROVA   " width="150" height="150">
+            <figcaption>Sepatu Safety Boot PETROVA (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY CHEETAH TYPE 2001 H.png" alt="Sepatu Safety CHEETAH Type 2001 H   " width="150" height="150">
+            <figcaption>Sepatu Safety CHEETAH Type 2001 H (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY CHEETAH TYPE 2002 H.png" alt="Sepatu Safety CHEETAH Type 2002 H   " width="150" height="150">
+            <figcaption>Sepatu Safety CHEETAH Type 2002 H (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY CHEETAH TYPE 2180 H.png" alt="Sepatu Safety CHEETAH Type 2180 H   " width="150" height="150">
+            <figcaption>Sepatu Safety CHEETAH Type 2180 H (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY CHEETAH TYPE 2288 C.png" alt="Sepatu Safety CHEETAH Type 2288 C   " width="150" height="150">
+            <figcaption>Sepatu Safety CHEETAH Type 2288 C (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY CHEETAH TYPE 7110 H.png" alt="Sepatu Safety CHEETAH Type 7110 H   " width="150" height="150">
+            <figcaption>Sepatu Safety CHEETAH Type 7110 H (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY DR. OSHA TYPE 2388 H.png" alt="Sepatu Safety DR. Osha Type 2388 H   " width="150" height="150">
+            <figcaption>Sepatu Safety DR. Osha Type 2388 H (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SEPATU SAFETY DR. OSHA TYPE 2398 C.png" alt="Sepatu Safety DR. Osha Type 2398 C   " width="150" height="150">
+            <figcaption>Sepatu Safety DR. Osha Type 2398 C (Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SHOWER COUPLING.png" alt="Shower Coupling   " width="150" height="150">
+            <figcaption>Shower Coupling   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIEVE MESH NO 20 FRAME METAL.png" alt="Sieve Mesh No 20 Frame Metal   " width="150" height="150">
+            <figcaption>Sieve Mesh No 20 Frame Metal   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIEVE MESH NO 4 FRAME KAYU.png" alt="Sieve Mesh No 4 Frame Kayu   " width="150" height="150">
+            <figcaption>Sieve Mesh No 4 Frame Kayu   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIGMAT ATS 12 INCHI.png" alt="Sigmat ATS 12 Inchi   " width="150" height="150">
+            <figcaption>Sigmat ATS 12"   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIGMAT XP TOOL 8 INCHI.png" alt="Sigmat XP TOOL 8 Inchi   " width="150" height="150">
+            <figcaption>Sigmat XP TOOL 8"   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIKAT BAJA 6 INCHI.png" alt="Sikat Baja 6 Inchi   " width="150" height="150">
+            <figcaption>Sikat Baja 6"   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIKAT BAJA KUNINGAN 8 BARIS.png" alt="Sikat Baja Kuningan 8 Baris  " width="150" height="150">
+            <figcaption>Sikat Baja Kuningan 8 Baris   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIKAT MANGKOK 3 INCHI KEPANG.png" alt="Sikat Mangkok 3 Inchi Kepang  " width="150" height="150">
+            <figcaption>Sikat Mangkok 3" Kepang   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIKAT MANGKOK 3 INCHI.png" alt="Sikat Mangkok 3 Inchi   " width="150" height="150">
+            <figcaption>Sikat Mangkok 3"    </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SIKU TUKANG CAMEL 12 INCHI.png" alt="Siku Tukang CAMEL 12 Inchi   " width="150" height="150">
+            <figcaption>Siku Tukang CAMEL 12" (Pertukangan)   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SKUN KABEL PUTIH.png" alt="Skun Kabel Putih   " width="150" height="150">
+            <figcaption>Skun Kabel Putih (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SKUN TEMBAGA.png" alt="Skun Tembaga   " width="150" height="150">
+            <figcaption>Skun Tembaga (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SOLDER LISTRIK DEKKO.png" alt="Solder Listrik DEKKO   " width="150" height="150">
+            <figcaption>Solder Listrik DEKKO (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SOLDER LISTRIK MASDA.png" alt="Solder Listrik MASDA   " width="150" height="150">
+            <figcaption>Solder Listrik MASDA (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SOLUBE CUTTING OIL @ 4 LTR.png" alt="Solube Cutting Oil @ 4 ltr   " width="150" height="150">
+            <figcaption>Solube Cutting Oil @ 4 ltr   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SPRAY GUN LISTRIK MULTUIPRO.png" alt="Spray Gun Listrik MULTIPRO   " width="150" height="150">
+            <figcaption>Spray Gun Listrik MULTIPRO (Alat Cat)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/SPRAY GUN SHOGUN TABUNG ATAS.png" alt="Spray Gun SHOGUN Tabung Atas   " width="150" height="150">
+            <figcaption>Spray Gun SHOGUN Tabung Atas (Alat Cat)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STAVOL MATSUNAGA 1000 W.png" alt="Stavol MATSUNAGA 1000 W   " width="150" height="150">
+            <figcaption>Stavol MATSUNAGA 1000 W (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STECKER BROCO.png" alt="Stecker BROCO   " width="150" height="150">
+            <figcaption>Stecker BROCO (Elektrik)   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STICK SANCHIN.png" alt="Stick SANCHIN   " width="150" height="150">
+            <figcaption>Stick SANCHIN   </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK + KABEL HOSINO 5 LOBANG X 5 MTR.png" alt="Stop Kontak + Kabel HOSINO 5 Lobang x 5 mtr   " width="150" height="150">
+            <figcaption>Stop Kontak + Kabel HOSINO 5 Lobang x 5 mtr (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK + KABEL KYOWA 4 LOBANG X 3 MTR.png" alt="Stop Kontak + Kabel KYOWA 4 Lobang x 3 mtr   " width="150" height="150">
+            <figcaption>Stop Kontak + Kabel KYOWA 4 Lobang x 3 mtr (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK + KABEL KYOWA 5 LOBANG X 3 MTR.png" alt="Stop Kontak + Kabel KYOWA 5 Lobang x 3 mtr   " width="150" height="150">
+            <figcaption>Stop Kontak + Kabel KYOWA 5 Lobang x 3 mtr (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK 1 LOBANG.png" alt="Stop Kontak 1 Lobang   " width="150" height="150">
+            <figcaption>Stop Kontak 1 Lobang (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK 2 LOBANG.png" alt="Stop Kontak 2 Lobang   " width="150" height="150">
+            <figcaption>Stop Kontak 2 Lobang (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK 3 LOBANG.png" alt="Stop Kontak 3 Lobang   " width="150" height="150">
+            <figcaption>Stop Kontak 3 Lobang (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK 4 LOBANG.png" alt="Stop Kontak 4 Lobang   " width="150" height="150">
+            <figcaption>Stop Kontak 4 Lobang (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK 5 LOBANG.png" alt="Stop Kontak 5 Lobang   " width="150" height="150">
+            <figcaption>Stop Kontak 5 Lobang (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK 6 LOBANG.png" alt="Stop Kontak 6 Lobang   " width="150" height="150">
+            <figcaption>Stop Kontak 6 Lobang (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK BROCO INBOW.png" alt="Stop Kontak BROCO Inbow   " width="150" height="150">
+            <figcaption>Stop Kontak BROCO Inbow (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP KONTAK BROCO OUTBOW.png" alt="Stop Kontak BROCO Outbow   " width="150" height="150">
+            <figcaption>Stop Kontak BROCO Outbow (Elektrik)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/STOP LEAK RADIATOR PRESTONE.png" alt="Stop Leak Radiator PRESTONE   " width="150" height="150">
+            <figcaption>Stop Leak Radiator PRESTONE  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TABUNG OTOMAT POMPA AIR FIBRE.png" alt="Tabung Otomat Pompa Air Fibre   " width="150" height="150">
+            <figcaption>Tabung Otomat Pompa Air Fibre (Sanitary) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TAKE UP BEARING NSK UCT - 211.png" alt="Take Up Bearing NSK - 211   " width="150" height="150">
+            <figcaption>Take Up Bearing NSK - 211  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TAKE UP BEARING UCT - 217.png" alt="Take Up Bearing UCT - 217   " width="150" height="150">
+            <figcaption>Take Up Bearing UCT - 217  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TAKEL SHUANG GE TYPE HS-T.png" alt="Takel SHUANG GE Type HS-T   " width="150" height="150">
+            <figcaption>Takel SHUANG GE Type HS-T  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TAKEL TYRONE TYPE HSC.png" alt="Takel TYRONE Type HSC   " width="150" height="150">
+            <figcaption>Takel TYRONE Type HSC  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG BUAYA TEKIRO.png" alt="Tang Buaya TEKIRO   " width="150" height="150">
+            <figcaption>Tang Buaya TEKIRO  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG KAKAK TUA PROTECT 8 INCHI.png" alt="Tang Kakak Tua PROTECT 8 Inchi   " width="150" height="150">
+            <figcaption>Tang Kakak Tua PROTECT 8"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG KAKAK TUA YAHOMURA 9 INCHI.png" alt="Tang Kakak Tua YAHOMURA 9 Inchi   " width="150" height="150">
+            <figcaption>Tang Kakak Tua YAHOMURA 9"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG KOMBINASI TEKIRO 7 INCHI.png" alt="Tang Kombinasi TEKIRO 7 Inchi   " width="150" height="150">
+            <figcaption>Tang Kombinasi TEKIRO 7"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG KOMBINASI TEKIRO 8 INCHI.png" alt="Tang Kombinasi TEKIRO 8 Inchi   " width="150" height="150">
+            <figcaption>Tang Kombinasi TEKIRO 8"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LANCIP CAP MATA 6 INCHI.png" alt="Tang Lancip Cap MATA 6 Inchi   " width="150" height="150">
+            <figcaption>Tang Lancip Cap MATA 6"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LANCIP MAX POWER 6 INCHI.png" alt="Tang Lancip MAX POWER 6 Inchi   " width="150" height="150">
+            <figcaption>Tang Lancip MAX POWER 6"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LANCIP MAX POWER 8 INCHI.png" alt="Tang Lancip MAX POWER 8 Inchi   " width="150" height="150">
+            <figcaption>Tang Lancip MAX POWER 8"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LANCIP TEKIRO 6 INCHI.png" alt="Tang Lancip TEKIRO 6 Inchi   " width="150" height="150">
+            <figcaption>Tang Lancip TEKIRO 6"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LANCIP TEKIRO 8 INCHI.png" alt="Tang Lancip TEKIRO 8 Inchi   " width="150" height="150">
+            <figcaption>Tang Lancip TEKIRO 8"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS AMERICAN EAGLE 1000 A.png" alt="Tang Las AMERICAN EAGLE 1000 A   " width="150" height="150">
+            <figcaption>Tang Las AMERICAN EAGLE 1000 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS BINZEL 800 A.png" alt="Tang Las BINZEL 800 A   " width="150" height="150">
+            <figcaption>Tang Las BINZEL 800 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS GERMANY 600 A.png" alt="Tang Las GERMANY 600 A   " width="150" height="150">
+            <figcaption>Tang Las GERMANY 600 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS HASSTON 800 A KOTAK.png" alt="Tang Las HASSTON 800 A Kotak   " width="150" height="150">
+            <figcaption>Tang Las HASSTON 800 A Kotak (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS HASSTON 800 A PRESS.png" alt="Tang Las HASSTON 800 A Press   " width="150" height="150">
+            <figcaption>Tang Las HASSTON 800 A Press (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS KURT HAUFE 800 A.png" alt="Tang Las KURT HAUFE 800 A   " width="150" height="150">
+            <figcaption>Tang Las KURT HAUFE 800 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS OYAMA 800 A.png" alt="Tang Las OYAMA 800 A   " width="150" height="150">
+            <figcaption>Tang Las OYAMA 800 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS SELLERY 800 A.png" alt="Tang Las SELLERY 800 A   " width="150" height="150">
+            <figcaption>Tang Las SELLERY 800 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG LAS WELDCRAFT 800 A.png" alt="Tang Las WELDCRAFT 800 A   " width="150" height="150">
+            <figcaption>Tang Las WELDCRAFT 800 A (Alat Las) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG POTONG MAX POWER 8 INCHI.png" alt="Tang Potong MAX POWER 8 Inchi   " width="150" height="150">
+            <figcaption>Tang Potong MAX POWER 8"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG POTONG TEKIRO 6 INCHI.png" alt="Tang Potong TEKIRO 6 Inchi   " width="150" height="150">
+            <figcaption>Tang Potong TEKIRO 6"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG POTONG TEKIRO 8 INCHI.png" alt="Tang Potong TEKIRO 8 Inchi   " width="150" height="150">
+            <figcaption>Tang Potong TEKIRO 8"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG RIVET ASTINO.png" alt="Tang Rivet ASTINO   " width="150" height="150">
+            <figcaption>Tang Rivet ASTINO  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG SNAPRING IWT 7 INCHI.png" alt="Tang Snapring IWT 7 Inchi   " width="150" height="150">
+            <figcaption>Tang Snapring IWT 7"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG SNAPRING MULTIPRO 7 INCHI.png" alt="Tang Snapring MULTIPRO 7 Inchi   " width="150" height="150">
+            <figcaption>Tang Snapring MULTIPRO 7"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TANG SNAPRING TEKIRO 9 INCHI.png" alt="Tang Snapring TEKIRO 9 Inchi   " width="150" height="150">
+            <figcaption>Tang Snapring TEKIRO 9"  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TEMBAKAN LEM KACA.png" alt="Tembakan Lem Kaca   " width="150" height="150">
+            <figcaption>Tembakan Lem Kaca  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TERPAL DOUBLE.png" alt="Terpal Double   " width="150" height="150">
+            <figcaption>Terpal Double  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TERPAL PLASTIK BIASA.png" alt="Terpal Plastik Biasa   " width="150" height="150">
+            <figcaption>Terpal Plastik Biasa  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TESTPEN CHROME.png" alt="Testpen Chrome   " width="150" height="150">
+            <figcaption>Testpen Chrome (Elektrik) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/THINNER NIPPON PAINT @ 1 LTR.png" alt="Thinner NIPPON PAINT @ 1 ltr   " width="150" height="150">
+            <figcaption>Thinner NIPPON PAINT @ 1 ltr (Alat Cat) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/THINNER NIPPON PAINT @ 5 LTR.png" alt="Thinner NIPPON PAINT @ 5 ltr   " width="150" height="150">
+            <figcaption>Thinner NIPPON PAINT @ 5 ltr (Alat Cat) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TIMBANGAN GANTUNG COSCO @ 50 KG.png" alt="Timbangan Gantung COSCO @ 50 kg   " width="150" height="150">
+            <figcaption>Timbangan Gantung COSCO @ 50 kg  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TIP CLEANER (KURIK KUPING).png" alt="Tip cleaner (Kurik Kuping)   " width="150" height="150">
+            <figcaption>Tip cleaner (Kurik Kuping)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOOL BIT (KECIL).png" alt="Tool Bit (Kecil)   " width="150" height="150">
+            <figcaption>Tool Bit (Kecil)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOOL BIT (SEDANG).png" alt="Tool Bit (Sedang)   " width="150" height="150">
+            <figcaption>Tool Bit (Sedang)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOOL BIT (BESAR).png" alt="Tool Bit (Besar)   " width="150" height="150">
+            <figcaption>Tool Bit (Besar)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPENG LAS GAGANG BLUE EAGLE.png" alt="Topeng Las Gagang BLUE EAGLE   " width="150" height="150">
+            <figcaption>Topeng Las Gagang BLUE EAGLE (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPENG LAS GAGANG VGS.png" alt="Topeng Las Gagang VGS   " width="150" height="150">
+            <figcaption>Topeng Las Gagang VGS (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPENG LAS MSA MODEL HELM.png" alt="Topeng Las MSA Model Helm   " width="150" height="150">
+            <figcaption>Topeng Las MSA Model Helm (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPI ASLAN.png" alt="Topi ASLAN   " width="150" height="150">
+            <figcaption>Topi ASLAN (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPI FSA.png" alt="Topi FSA   " width="150" height="150">
+            <figcaption>Topi FSA (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPI JSW.png" alt="Topi JSW   " width="150" height="150">
+            <figcaption>Topi JSW (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPI JSW.png" alt="Topi JSW   " width="150" height="150">
+            <figcaption>Topi JSW (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPI MSA BIASA.png" alt="Topi MSA Biasa   " width="150" height="150">
+            <figcaption>Topi MSA Biasa (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/TOPI MSA PUTAR.png" alt="Topi MSA Putar (Fastrack)   " width="150" height="150">
+            <figcaption>Topi MSA Putar (Fastrack)(Safety)  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/UKUR ANGIN PENSIL KECIL.png" alt="Ukur Angin Pensil Kecil   " width="150" height="150">
+            <figcaption>Ukur Angin Pensil Kecil  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/UKUR ANGIN TEKIRO 60 LBS.png" alt="Ukur Angin TEKIRO 60 lbs   " width="150" height="150">
+            <figcaption>Ukur Angin TEKIRO 60 lbs  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/UKUR ANGIN TEKIRO 160 LBS.png" alt="Ukur Angin TEKIRO 160 lbs   " width="150" height="150">
+            <figcaption>Ukur Angin TEKIRO 160 lbs  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WATERPASS MAGNET NANKAI 40 CM.png" alt="Waterpass Magnet NANKAI 40 cm   " width="150" height="150">
+            <figcaption>Waterpass Magnet NANKAI 40 cm  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WATERPASS MAGNET NANKAI 60 CM.png" alt="Waterpass Magnet NANKAI 60 cm   " width="150" height="150">
+            <figcaption>Waterpass Magnet NANKAI 60 cm  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WATERPASS MAGNET TOSITA 60 CM.png" alt="Waterpass Magnet TOSITA 60 cm   " width="150" height="150">
+            <figcaption>Waterpass Magnet TOSITA 60 cm  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WATERPASS MAGNET TOSITA 100 CM.png" alt="Waterpass Magnet TOSITA 100 cm   " width="150" height="150">
+            <figcaption>Waterpass Magnet TOSITA 100 cm  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WATERPASS MAGNET XIN EXTEN 60 CM.png" alt="Waterpass Magnet XIN EXTEN 60 cm   " width="150" height="150">
+            <figcaption>Waterpass Magnet XIN EXTEN 60 cm  </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WEARPACK BIRU DONGER.png" alt="Wearpack Biru Dongker   " width="150" height="150">
+            <figcaption>Wearpack Biru Dongker (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WEARPACK LOKAL.png" alt="Wearpack Lokal   " width="150" height="150">
+            <figcaption>Wearpack Lokal (Safety) </figcaption>
+        </figure>
+        
+        <figure>
+            <img src="FOTO PRODUK/WEARPACK MERAH.png" alt="Wearpack Merah   " width="150" height="150">
+            <figcaption>Wearpack Merah (Safety) </figcaption>
+        </figure>
+
+
+      
+
+
+
+    <div id="noProductMessage">
+        <p>🔍 Produk tidak ditemukan. Coba kata kunci lain.</p>
+    </div>
+    </main>        
+
+
+<script>
+function filterProduct() {
+    const search = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categorySelect').value.toLowerCase();
+    const products = document.querySelectorAll('figure');
+    const noMessage = document.getElementById('noProductMessage');
+    let found = 0;
+
+    products.forEach(p => {
+        const name = p.querySelector('figcaption').textContent.toLowerCase();
+        if (name.includes(search) && name.includes(category)) {
+            p.style.display = "block";
+            found++;
+        } else {
+            p.style.display = "none";
+        }
+    });
+
+    noMessage.style.display = found === 0 ? "block" : "none";
+}
+</script>
+</body>
+</html>
